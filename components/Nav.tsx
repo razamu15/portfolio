@@ -15,21 +15,21 @@ const states: { [key: string]: React.CSSProperties } = {
     left: '81px',
     width: '65px',
   },
-  '/blog': {
+  '/experience': {
     left: '157px',
     width: '55px',
   },
-  '/bookmarks': {
+  '/projects': {
     left: '224px',
     width: '100px',
   },
-  '/projects': {
+  '/extras': {
     left: '340px',
     width: '79px',
   },
 };
 
-const NavLink = styled.a`
+const LinkBtn = styled.a`
   color: inherit;
   text-decoration: none;
   cursor: pointer;
@@ -45,6 +45,28 @@ const NavLink = styled.a`
   }
 `;
 
+export interface LinkProps {
+  href: string;
+  text: string;
+  isActive: boolean;
+}
+
+const NavLink = ({ href, text, isActive }: LinkProps): JSX.Element => {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        background: isActive ? 'white' : 'transparent',
+        borderRadius: '25px',
+        padding: '.75rem ',
+        margin: '0.25rem',
+      }}
+    >
+      <LinkBtn href={href}>{text}</LinkBtn>
+    </div>
+  );
+};
+
 const MenuContainer = styled(Container)`
   cursor: pointer;
 `;
@@ -55,13 +77,37 @@ export interface NavProps {
   onClose: () => void;
 }
 
-const Links = (): JSX.Element => (
+export interface BtnProps {
+  path: string;
+}
+
+const Links = (props: BtnProps): JSX.Element => (
   <>
-    <NavLink href="/">Home</NavLink>
-    <NavLink href="/about">About</NavLink>
-    <NavLink href="/blog">Blog</NavLink>
-    <NavLink href="/bookmarks">Bookmarks</NavLink>
-    <NavLink href="/projects">Projects</NavLink>
+    <NavLink
+      href="/"
+      text="Home"
+      isActive={props.path === '/' ? true : false}
+    />
+    <NavLink
+      href="/about"
+      text="About"
+      isActive={props.path.startsWith('/about') ? true : false}
+    />
+    <NavLink
+      href="/experience"
+      text="Experience"
+      isActive={props.path === '/experience' ? true : false}
+    />
+    <NavLink
+      href="/projects"
+      text="Projects"
+      isActive={props.path === '/projects' ? true : false}
+    />
+    <NavLink
+      href="/extras"
+      text="Extras"
+      isActive={props.path === '/extras' ? true : false}
+    />
   </>
 );
 
@@ -88,7 +134,7 @@ const Nav = ({ isOpen, onOpen, onClose }: NavProps): JSX.Element => {
       margin="3rem 0"
     >
       <Container display={['none', 'none', 'flex']}>
-        <NavLink href="/">Antoine Ordonez</NavLink>
+        <NavLink href="/" text="Muhammad Saad Raza" isActive={false} />
       </Container>
       <MenuContainer display={['flex', 'none', 'none']}>
         {isOpen ? (
@@ -106,39 +152,32 @@ const Nav = ({ isOpen, onOpen, onClose }: NavProps): JSX.Element => {
       </MenuContainer>
       {isOpen && (
         <Grid gridTemplateColumns="1fr" style={{ fontSize: '2rem' }} py="3rem">
-          <Links />
+          <Links path={router.asPath} />
         </Grid>
       )}
       <Container alignContent="center" display={['none', 'flex', 'flex']}>
         <Grid
           width="fit-content"
-          gridGap="2rem"
+          gridGap=".75rem"
           alignItems="center"
           justifyItems="center"
           gridTemplateColumns="repeat(5, auto)"
           style={{
             borderRadius: '25px',
             background: 'rgba(0, 0, 0, 0.04)',
-            padding: '15px',
+            // padding: '15px',
             position: 'relative',
           }}
         >
-          <div
-            style={{
-              background: 'white',
-              position: 'absolute',
-              borderRadius: '25px',
-              height: '85%',
-              left: '6px',
-              width: '60px',
-              ...navStyle,
-            }}
-          />
-          <Links />
+          <Links path={router.asPath} />
         </Grid>
       </Container>
       <Container alignContent="flex-end" display={['none', 'none', 'flex']}>
-        <NavLink href="mailto:hello@shellbear.me">Contact</NavLink>
+        <NavLink
+          href="mailto:hello@shellbear.me"
+          text="Contact"
+          isActive={false}
+        />
       </Container>
     </Grid>
   );
