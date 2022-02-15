@@ -1,9 +1,18 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
+import {
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  List,
+  ListItem,
+} from '@chakra-ui/react';
 import { Container, Title, Button, Grid, Link, Text } from '@components';
 import styles from '@styles/Home.module.css';
+import { FaChevronRight } from 'react-icons/fa';
 
 const Home = (): JSX.Element => {
   const glance = React.useRef(null);
@@ -106,7 +115,7 @@ const Home = (): JSX.Element => {
             <a href="/projects">Projects</a> page for more details.
           </Text>
           <Tabs variant="soft-rounded" colorScheme="gray" paddingY="2rem">
-            <TabList>
+            <TabList justifyContent="center">
               <Tab>Backend</Tab>
               <Tab>Frontend</Tab>
               <Tab>Cloud & Architecture</Tab>
@@ -114,7 +123,37 @@ const Home = (): JSX.Element => {
             </TabList>
             <TabPanels>
               <TabPanel>
-                <p>one!</p>
+                <List width="100%" spacing={3}>
+                  <ListItem className="exp-entry">
+                    <FaChevronRight
+                      style={{ margin: '0px' }}
+                      color="green.500"
+                    />
+                    <p className="glance">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                    </p>
+                  </ListItem>
+                  <ListItem className="exp-entry">
+                    <FaChevronRight color="green.500" />
+                    <p className="glance">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Lorem ipsum dolor sit amet
+                    </p>
+                  </ListItem>
+                  <ListItem className="exp-entry">
+                    <FaChevronRight color="green.500" />
+                    <p className="glance">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                    </p>
+                  </ListItem>
+                  <ListItem className="exp-entry">
+                    <FaChevronRight color="green.500" />
+                    <p className="glance">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                    </p>
+                  </ListItem>
+                </List>
               </TabPanel>
               <TabPanel>
                 <p>two!</p>

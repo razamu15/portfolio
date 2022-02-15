@@ -86,10 +86,6 @@ a:hover {
   z-index: 400;
 }
 
-.timeline-entry > dt, .timeline-entry > dd {
-  
-}
-
 .timeline-bg {
   display: block;
   height: inherit;
@@ -102,4 +98,27 @@ a:hover {
   gap: 1rem;
   max-height: 0;
   grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+}
+
+.exp-details{
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
+
+.exp-entry{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.exp-entry .work{
+  margin-left: 2rem;
+  width: 60%;
+  text-align: left;
+}
+
+.exp-entry .glance{
+  margin-left: 2rem;
+  width: 90%;
+  text-align: left;
 }

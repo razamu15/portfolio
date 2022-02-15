@@ -17,9 +17,11 @@ import {
   TabPanel,
   useDisclosure,
   Collapse,
-  Box,
+  List,
+  ListItem,
 } from '@chakra-ui/react';
 import { getPosts, Post } from '@posts';
+import { FaChevronRight } from 'react-icons/fa';
 
 interface Job {
   job: Post;
@@ -64,17 +66,35 @@ const JobEntry = ({ job, order }: Job) => {
           </Grid>
         </Grid>
       </TransparentLink>
-      <Collapse in={isOpen} animateOpacity>
-        <Box
-          p="40px"
-          color="white"
-          mt="4"
-          bg="teal.500"
-          rounded="md"
-          shadow="md"
-        >
-          <p>som random ass thxt that doesnt matter in the slghtest</p>
-        </Box>
+      <Collapse className="exp-details" in={isOpen} animateOpacity>
+        <List width="100%" spacing={3}>
+          <ListItem className="exp-entry">
+            <FaChevronRight style={{ margin: '0px' }} color="green.500" />
+            <p className="work">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit
+            </p>
+          </ListItem>
+          <ListItem className="exp-entry">
+            <FaChevronRight color="green.500" />
+            <p className="work">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem
+              ipsum dolor sit amet
+            </p>
+          </ListItem>
+          <ListItem className="exp-entry">
+            <FaChevronRight color="green.500" />
+            <p className="work">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem
+              ipsum dolor sit amet, consectetur adipisicing elit
+            </p>
+          </ListItem>
+          <ListItem className="exp-entry">
+            <FaChevronRight color="green.500" />
+            <p className="work">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit
+            </p>
+          </ListItem>
+        </List>
       </Collapse>
     </>
   );
