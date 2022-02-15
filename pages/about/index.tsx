@@ -8,10 +8,10 @@ import {
   TabPanel,
 } from '@chakra-ui/react';
 import Head from 'next/head';
+
 import {
   SiGo,
   SiKubernetes,
-  SiElixir,
   SiPostgresql,
   SiTypescript,
   SiAmazonaws,
@@ -21,11 +21,93 @@ import {
   SiNextdotjs,
   SiPython,
   SiGraphql,
+  SiCsharp,
+  SiNeo4J,
 } from 'react-icons/si';
+
+const techIcons = {
+  golang: {
+    Icon: SiGo,
+    url: 'https://golang.org/',
+    name: 'Golang',
+  },
+  kubernetes: {
+    Icon: SiKubernetes,
+    url: 'https://kubernetes.io/',
+    name: 'Kubernetes',
+  },
+  typescript: {
+    Icon: SiTypescript,
+    url: 'https://www.typescriptlang.org/',
+    name: 'Typescript',
+  },
+  react: {
+    Icon: SiReact,
+    url: 'https://reactjs.org/',
+    name: 'React',
+  },
+  graphql: {
+    Icon: SiGraphql,
+    url: 'https://graphql.org/',
+    name: 'GraphQL',
+  },
+  aws: {
+    Icon: SiAmazonaws,
+    url: 'https://aws.amazon.com/',
+    name: 'AWS',
+  },
+  next: {
+    Icon: SiNextdotjs,
+    url: 'https://nextjs.org/',
+    name: 'NextJs',
+  },
+  gcp: {
+    Icon: SiGooglecloud,
+    url: 'https://cloud.google.com/',
+    name: 'GCP',
+  },
+  terraform: {
+    Icon: SiTerraform,
+    url: 'https://www.terraform.io/',
+    name: 'Terraform',
+  },
+  postgres: {
+    Icon: SiPostgresql,
+    url: 'https://www.postgresql.org/',
+    name: 'PostgreSQL',
+  },
+  python: {
+    Icon: SiPython,
+    url: 'https://www.python.org/',
+    name: 'Python',
+  },
+  'c#': {
+    Icon: SiCsharp,
+    url: 'https://www.python.org/',
+    name: 'c#',
+  },
+  neo4j: {
+    Icon: SiNeo4J,
+    url: 'https://www.python.org/',
+    name: 'Neo4J',
+  },
+  template: {
+    Icon: null,
+    url: 'https://www.',
+    name: 'template',
+  },
+};
 
 import { Title, Text, Container, Grid, Link, Card } from '@components';
 
-function TechPanel() {
+export interface PanelProps {
+  noob: [String];
+  pro: [String];
+}
+
+function TechPanel({ noob, pro }: PanelProps) {
+  console.log(techIcons);
+
   return (
     <Grid
       gridGap="2rem"
@@ -44,15 +126,14 @@ function TechPanel() {
           Beginner
         </Badge>
         <div className="tech-level">
-          <Card>
-            <SiGo size="2rem" />
-          </Card>
-          <Card>
-            <SiKubernetes size="2rem" />
-          </Card>
-          <Card>
-            <SiKubernetes size="2rem" />
-          </Card>
+          {noob.map((tech) => {
+            let Icon = techIcons[tech].Icon;
+            return (
+              <Card>
+                <Icon size="2rem" />
+              </Card>
+            );
+          })}
         </div>
       </Container>
       <Container>
@@ -66,41 +147,17 @@ function TechPanel() {
           Advanced
         </Badge>
         <div className="tech-level">
-          <Link href="google.ca">
-            <Card>
-              <SiGo size="2rem" />
-            </Card>
-          </Link>
-          <Link href="google.ca">
-            <Card>
-              <SiKubernetes size="2rem" />
-            </Card>
-          </Link>
-          <Link href="google.ca">
-            <Card>
-              <SiKubernetes size="2rem" />
-            </Card>
-          </Link>
-          <Link href="google.ca">
-            <Card>
-              <SiKubernetes size="2rem" />
-            </Card>
-          </Link>
-          <Link href="google.ca">
-            <Card>
-              <SiKubernetes size="2rem" />
-            </Card>
-          </Link>
-          <Link href="google.ca">
-            <Card>
-              <SiKubernetes size="2rem" />
-            </Card>
-          </Link>
-          <Link href="google.ca">
-            <Card>
-              <SiKubernetes size="2rem" />
-            </Card>
-          </Link>
+          {pro.map((tech) => {
+            let Icon = techIcons[tech].Icon;
+            let link = techIcons[tech].url;
+            return (
+              <Link href={link}>
+                <Card>
+                  <Icon size="2rem" />
+                </Card>
+              </Link>
+            );
+          })}
         </div>
       </Container>
     </Grid>
@@ -108,60 +165,6 @@ function TechPanel() {
 }
 
 const About = (): JSX.Element => {
-  const stacks = React.useMemo(
-    () => [
-      {
-        Icon: SiGo,
-        url: 'https://golang.org/',
-      },
-      {
-        Icon: SiKubernetes,
-        url: 'https://kubernetes.io/',
-      },
-      {
-        Icon: SiTypescript,
-        url: 'https://www.typescriptlang.org/',
-      },
-      {
-        Icon: SiReact,
-        url: 'https://reactjs.org/',
-      },
-      {
-        Icon: SiGraphql,
-        url: 'https://graphql.org/',
-      },
-      {
-        Icon: SiAmazonaws,
-        url: 'https://aws.amazon.com/',
-      },
-      {
-        Icon: SiNextdotjs,
-        url: 'https://nextjs.org/',
-      },
-      {
-        Icon: SiElixir,
-        url: 'https://elixir-lang.org/',
-      },
-      {
-        Icon: SiGooglecloud,
-        url: 'https://cloud.google.com/',
-      },
-      {
-        Icon: SiTerraform,
-        url: 'https://www.terraform.io/',
-      },
-      {
-        Icon: SiPostgresql,
-        url: 'https://www.postgresql.org/',
-      },
-      {
-        Icon: SiPython,
-        url: 'https://www.python.org/',
-      },
-    ],
-    [],
-  );
-
   return (
     <Container>
       <Head>
@@ -211,13 +214,13 @@ const About = (): JSX.Element => {
           </TabList>
           <TabPanels>
             <TabPanel>
-              <TechPanel />
+              <TechPanel noob={['c#']} pro={['postgres']} />
             </TabPanel>
             <TabPanel>
               <p>two!</p>
             </TabPanel>
             <TabPanel>
-              <TechPanel />
+              <TechPanel noob={['neo4j']} pro={['python']} />
             </TabPanel>
           </TabPanels>
         </Tabs>
