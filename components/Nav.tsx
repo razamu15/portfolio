@@ -6,29 +6,6 @@ import styled from 'styled-components';
 import Menu from '@icons/Menu';
 import Close from '@icons/Close';
 
-const states: { [key: string]: React.CSSProperties } = {
-  '/': {
-    left: '6px',
-    width: '61px',
-  },
-  '/about': {
-    left: '81px',
-    width: '65px',
-  },
-  '/experience': {
-    left: '157px',
-    width: '55px',
-  },
-  '/projects': {
-    left: '224px',
-    width: '100px',
-  },
-  '/extras': {
-    left: '340px',
-    width: '79px',
-  },
-};
-
 const LinkBtn = styled.a`
   color: inherit;
   text-decoration: none;
@@ -91,17 +68,17 @@ const Links = (props: BtnProps): JSX.Element => (
     <NavLink
       href="/about"
       text="About"
-      isActive={props.path.startsWith('/about') ? true : false}
+      isActive={props.path === '/about' ? true : false}
     />
     <NavLink
-      href="/experience"
-      text="Experience"
-      isActive={props.path === '/experience' ? true : false}
+      href="/experiences"
+      text="Experiences"
+      isActive={props.path.startsWith('/experiences') ? true : false}
     />
     <NavLink
       href="/projects"
       text="Projects"
-      isActive={props.path === '/projects' ? true : false}
+      isActive={props.path.startsWith('/projects') ? true : false}
     />
     <NavLink
       href="/extras"
@@ -113,16 +90,6 @@ const Links = (props: BtnProps): JSX.Element => (
 
 const Nav = ({ isOpen, onOpen, onClose }: NavProps): JSX.Element => {
   const router = useRouter();
-  let navStyle = states['/'];
-
-  if (router.asPath !== '/') {
-    for (const path of Object.keys(states).slice(1)) {
-      if (router.asPath.startsWith(path)) {
-        navStyle = states[path];
-        break;
-      }
-    }
-  }
 
   return (
     <Grid
