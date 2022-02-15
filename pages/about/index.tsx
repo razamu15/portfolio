@@ -20,6 +20,91 @@ import {
 import { getPosts, Post } from '@posts';
 import { TransparentLink } from '@components';
 
+import {
+  Box,
+  chakra,
+  Flex,
+  SimpleGrid,
+  Stat,
+  StatLabel,
+  StatNumber,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import { ReactNode } from 'react';
+import { BsPerson } from 'react-icons/bs';
+import { FiServer } from 'react-icons/fi';
+import { GoLocation } from 'react-icons/go';
+
+interface StatsCardProps {
+  title: string;
+  stat: string;
+  icon: ReactNode;
+}
+
+function StatsCard(props: StatsCardProps) {
+  const { title, stat, icon } = props;
+  return (
+    <Stat
+      px={{ base: 2, md: 4 }}
+      py={'5'}
+      shadow={'md'}
+      border={'0.3px solid'}
+      borderColor={useColorModeValue('gray.800', 'gray.500')}
+      rounded={'lg'}
+    >
+      <Flex justifyContent={'space-between'}>
+        <Box pl={{ base: 2, md: 4 }}>
+          <StatLabel fontWeight={'medium'} isTruncated>
+            {title}
+          </StatLabel>
+          <StatNumber fontSize={'2xl'} fontWeight={'medium'}>
+            {stat}
+          </StatNumber>
+        </Box>
+        <Box
+          my={'auto'}
+          color={useColorModeValue('gray.800', 'gray.200')}
+          alignContent={'center'}
+        >
+          {icon}
+        </Box>
+      </Flex>
+    </Stat>
+  );
+}
+
+function BasicStatistics() {
+  return (
+    <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
+      <chakra.h1
+        textAlign={'center'}
+        fontSize={'4xl'}
+        py={10}
+        fontWeight={'bold'}
+      >
+        Our company is expanding, you could be too.
+      </chakra.h1>
+      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
+        <StatsCard
+          title={'Users'}
+          stat={'5,000'}
+          icon={<BsPerson size={'3em'} />}
+        />
+        <StatsCard
+          title={'Servers'}
+          stat={'1,000'}
+          icon={<FiServer size={'3em'} />}
+        />
+        <StatsCard
+          title={'Datacenters'}
+          stat={'7'}
+          icon={<GoLocation size={'3em'} />}
+        />
+      </SimpleGrid>
+    </Box>
+  );
+}
+
 interface AboutProps {
   experiences: Post[];
 }
@@ -137,67 +222,11 @@ const About = ({ experiences }: AboutProps): JSX.Element => {
           Work Experiences
         </Title>
         <Container width="100%">
-          {experiences.map(({ data }, i) => (
-            <TransparentLink href={`/about/${data.slug}`} key={data.slug}>
-              <Grid
-                key={i}
-                gridTemplateColumns="1fr 4fr"
-                justifyItems="flex-start"
-                gridGap="1rem"
-                paddingY="2rem"
-                borderBottom="1px solid rgba(0,0,0,0.1)"
-              >
-                <Container width="100%">
-                  <Text>0{experiences.length - i}</Text>
-                </Container>
-                <Grid width="100%" gridTemplateColumns="4fr 1fr">
-                  <Container
-                    width="100%"
-                    alignItems="flex-start"
-                    textAlign="start"
-                  >
-                    <Grid
-                      width="100%"
-                      gridTemplateColumns="repeat(2, auto)"
-                      justifyItems="flex-start"
-                      justifyContent="flex-start"
-                      gridGap="1rem"
-                    >
-                      <Title fontSize="1.5rem" margin={0} as="h3">
-                        {data.title}
-                      </Title>
-                      <Text
-                        fontSize="smaller"
-                        margin={0}
-                        color="rgba(0, 0, 0, 0.1)"
-                      >
-                        {data.date}
-                      </Text>
-                    </Grid>
-                    <Text fontSize="1rem">{data.caption}</Text>
-                  </Container>
-                  <Text fontSize="1.5rem">&rarr;</Text>
-                </Grid>
-              </Grid>
-            </TransparentLink>
-          ))}
+          <BasicStatistics />
         </Container>
       </Container>
     </Container>
   );
-};
-
-export const getStaticProps: GetStaticProps = async () => {
-  const experiences = await getPosts('experiences');
-  experiences.sort((a, b) =>
-    b.data.date.toString().localeCompare(a.data.date.toString()),
-  );
-
-  return {
-    props: {
-      experiences,
-    },
-  };
 };
 
 export default About;
