@@ -69,7 +69,6 @@ const Home = (): JSX.Element => {
                 More about me
               </Button>
             </Link>
-
             <Button
               width="100%"
               backgroundColor="rgb(226,232,240)"

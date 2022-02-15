@@ -67,3 +67,39 @@ a:hover {
 .notion-full-page {
   padding-bottom: 0 !important;
 }
+
+.timeline-entry {
+  margin-left: 2rem;
+  padding: 1rem 0rem;
+}
+
+.timeline-entry > dt:before {
+  content: ' ';
+  background: white;
+  display: inline-block;
+  border-radius: 50%;
+  border: 3px solid black; /* was #22c0e8 */
+  margin-left: -2.75rem;
+  margin-right: 2rem;
+  width: 20px;
+  height: 20px;
+  z-index: 400;
+}
+
+.timeline-entry > dt, .timeline-entry > dd {
+  
+}
+
+.timeline-bg {
+  display: block;
+  height: inherit;
+  border-left: solid black 3px;
+  margin-left: 4rem;
+}
+
+.tech-level{
+  display: grid;
+  gap: 1rem;
+  max-height: 0;
+  grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+}

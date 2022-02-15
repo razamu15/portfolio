@@ -1,8 +1,13 @@
 import React from 'react';
-import { Title, Text, Container, Grid, Link, Card } from '@components';
-import { GetStaticProps } from 'next';
+import {
+  Badge,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+} from '@chakra-ui/react';
 import Head from 'next/head';
-
 import {
   SiGo,
   SiKubernetes,
@@ -17,99 +22,92 @@ import {
   SiPython,
   SiGraphql,
 } from 'react-icons/si';
-import { getPosts, Post } from '@posts';
-import { TransparentLink } from '@components';
 
-import {
-  Box,
-  chakra,
-  Flex,
-  SimpleGrid,
-  Stat,
-  StatLabel,
-  StatNumber,
-  useColorModeValue,
-} from '@chakra-ui/react';
-import { ReactNode } from 'react';
-import { BsPerson } from 'react-icons/bs';
-import { FiServer } from 'react-icons/fi';
-import { GoLocation } from 'react-icons/go';
+import { Title, Text, Container, Grid, Link, Card } from '@components';
 
-interface StatsCardProps {
-  title: string;
-  stat: string;
-  icon: ReactNode;
-}
-
-function StatsCard(props: StatsCardProps) {
-  const { title, stat, icon } = props;
+function TechPanel() {
   return (
-    <Stat
-      px={{ base: 2, md: 4 }}
-      py={'5'}
-      shadow={'md'}
-      border={'0.3px solid'}
-      borderColor={useColorModeValue('gray.800', 'gray.500')}
-      rounded={'lg'}
+    <Grid
+      gridGap="2rem"
+      gridTemplateColumns={['1fr', 'repeat(2, 1fr)']}
+      justifyItems="stretch"
+      alignItems="stretch"
     >
-      <Flex justifyContent={'space-between'}>
-        <Box pl={{ base: 2, md: 4 }}>
-          <StatLabel fontWeight={'medium'} isTruncated>
-            {title}
-          </StatLabel>
-          <StatNumber fontSize={'2xl'} fontWeight={'medium'}>
-            {stat}
-          </StatNumber>
-        </Box>
-        <Box
-          my={'auto'}
-          color={useColorModeValue('gray.800', 'gray.200')}
-          alignContent={'center'}
+      <Container>
+        <Badge
+          ml="1"
+          mb="1rem"
+          fontSize="0.8em"
+          colorScheme="green"
+          borderRadius="lg"
         >
-          {icon}
-        </Box>
-      </Flex>
-    </Stat>
+          Beginner
+        </Badge>
+        <div className="tech-level">
+          <Card>
+            <SiGo size="2rem" />
+          </Card>
+          <Card>
+            <SiKubernetes size="2rem" />
+          </Card>
+          <Card>
+            <SiKubernetes size="2rem" />
+          </Card>
+        </div>
+      </Container>
+      <Container>
+        <Badge
+          ml="1"
+          mb="1rem"
+          fontSize="0.8em"
+          colorScheme="green"
+          borderRadius="lg"
+        >
+          Advanced
+        </Badge>
+        <div className="tech-level">
+          <Link href="google.ca">
+            <Card>
+              <SiGo size="2rem" />
+            </Card>
+          </Link>
+          <Link href="google.ca">
+            <Card>
+              <SiKubernetes size="2rem" />
+            </Card>
+          </Link>
+          <Link href="google.ca">
+            <Card>
+              <SiKubernetes size="2rem" />
+            </Card>
+          </Link>
+          <Link href="google.ca">
+            <Card>
+              <SiKubernetes size="2rem" />
+            </Card>
+          </Link>
+          <Link href="google.ca">
+            <Card>
+              <SiKubernetes size="2rem" />
+            </Card>
+          </Link>
+          <Link href="google.ca">
+            <Card>
+              <SiKubernetes size="2rem" />
+            </Card>
+          </Link>
+          <Link href="google.ca">
+            <Card>
+              <SiKubernetes size="2rem" />
+            </Card>
+          </Link>
+        </div>
+      </Container>
+    </Grid>
   );
 }
 
-function BasicStatistics() {
-  return (
-    <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
-      <chakra.h1
-        textAlign={'center'}
-        fontSize={'4xl'}
-        py={10}
-        fontWeight={'bold'}
-      >
-        Our company is expanding, you could be too.
-      </chakra.h1>
-      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
-        <StatsCard
-          title={'Users'}
-          stat={'5,000'}
-          icon={<BsPerson size={'3em'} />}
-        />
-        <StatsCard
-          title={'Servers'}
-          stat={'1,000'}
-          icon={<FiServer size={'3em'} />}
-        />
-        <StatsCard
-          title={'Datacenters'}
-          stat={'7'}
-          icon={<GoLocation size={'3em'} />}
-        />
-      </SimpleGrid>
-    </Box>
-  );
-}
-
-interface AboutProps {
-  experiences: Post[];
-}
-
-const About = ({ experiences }: AboutProps): JSX.Element => {
+const About = (): JSX.Element => {
   const stacks = React.useMemo(
     () => [
       {
@@ -190,39 +188,137 @@ const About = ({ experiences }: AboutProps): JSX.Element => {
         alignContent="center"
         alignItems="center"
         textAlign="center"
-        width="100%"
+        width="120%"
+        marginLeft="-10%"
+        minHeight="500px"
       >
         <Title fontSize="40px" as="h2">
-          Technologies I frequently use
+          Technologies I Use
         </Title>
-        <Grid
-          gridTemplateColumns={['repeat(3 , 1fr)', 'repeat(6 , 1fr)']}
-          gridGap="1rem"
-          justifyItems="center"
-          maxWidth="40rem"
+        <Tabs
+          orientation="vertical"
+          variant="soft-rounded"
+          colorScheme="gray"
+          width="100%"
         >
-          {stacks.map(({ Icon, url }, i) => (
-            <Link href={url} key={url}>
-              <Card key={i}>
-                <Icon size="2rem" />
-              </Card>
-            </Link>
-          ))}
-        </Grid>
+          <TabList mt="4rem" mr="1rem">
+            <Tab>Highlights</Tab>
+            <Tab>Languages</Tab>
+            <Tab>Frameworks</Tab>
+            <Tab>Databases</Tab>
+            <Tab>Technologies</Tab>
+            <Tab>Tools</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              <TechPanel />
+            </TabPanel>
+            <TabPanel>
+              <p>two!</p>
+            </TabPanel>
+            <TabPanel>
+              <TechPanel />
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       </Container>
+
       <Container
-        alignContent="center"
-        alignItems="center"
-        textAlign="center"
+        paddingY="4rem"
         width="100%"
-        paddingBottom="4rem"
+        // paddingBottom="4rem"
         gridGap="3rem"
       >
         <Title fontSize="40px" as="h2">
-          Work Experiences
+          My Learning Journey
         </Title>
         <Container width="100%">
-          <BasicStatistics />
+          <div className="timeline-bg">
+            <dl>
+              <div className="timeline-entry">
+                <dt>1066</dt>
+                <dd>
+                  {' '}
+                  September. Harald Hardrada, King of Norway, invades England
+                </dd>
+                <dd>
+                  {' '}
+                  October. William of Normandy defeats and kills Harold II at
+                  Hastings
+                </dd>
+                <dd>
+                  {' '}
+                  October. William of Normandy defeats and kills Harold II at
+                  Hastings
+                </dd>
+                <dd>
+                  {' '}
+                  October. William of Normandy defeats and kills Harold II at
+                  Hastings
+                </dd>
+                <dd>
+                  {' '}
+                  October. William of Normandy defeats and kills Harold II at
+                  Hastings
+                </dd>
+                <dd>
+                  {' '}
+                  October. William of Normandy defeats and kills Harold II at
+                  Hastings
+                </dd>
+              </div>
+
+              <div className="timeline-entry">
+                <dt>1070</dt>
+                <dd> William the Conqueror subdues the north of England</dd>
+                <dd> First Norman stone castle is built in Wales</dd>
+              </div>
+
+              <div className="timeline-entry">
+                <dt>1076</dt>
+                <dd>
+                  {' '}
+                  &#8216;Revolt of the Earls&#8217; ends with the execution of
+                  Waltheof, Earl of Northumbria
+                </dd>
+              </div>
+
+              <div className="timeline-entry">
+                <dt>1077</dt>
+                <dd>
+                  {' '}
+                  Bayeux Tapestry illustrating the Battle of Hastings is
+                  completed
+                </dd>
+              </div>
+
+              <div className="timeline-entry">
+                <dt>1085</dt>
+                <dd>
+                  {' '}
+                  Domesday Book is instituted to survey the English lands of
+                  William the Conqueror
+                </dd>
+              </div>
+
+              <div className="timeline-entry">
+                <dt>1086</dt>
+                <dd>
+                  {' '}
+                  Landholders swear loyalty to William the Conqueror at
+                  Salisbury
+                </dd>
+              </div>
+
+              <div className="timeline-entry">
+                <dt>1087</dt>
+                <dd> William the Conqueror dies at Rouen, Normandy</dd>
+              </div>
+
+              <dt>1087</dt>
+              <dd> William II is crowned at Westminster Abbey</dd>
+            </dl>
+          </div>
         </Container>
       </Container>
     </Container>

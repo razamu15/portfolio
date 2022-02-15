@@ -9,12 +9,12 @@ export interface CardProps extends GridProps {
 
 const Card = styled(Grid)<CardProps>`
   background-color: white;
-  padding: 30px;
+  padding: 1.8rem;
   cursor: pointer;
   border-radius: 10px;
   font-size: 1rem;
   transition: 0.3s ease-in-out 0s;
-  justify-content: start;
+  justify-content: center;
 
   ${({ selected }) =>
     selected &&
