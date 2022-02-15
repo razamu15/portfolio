@@ -1,26 +1,25 @@
 import React from 'react';
-import { Title, Text, Container, Grid, Link, Card } from '@components';
+import {
+  Title,
+  Text,
+  Container,
+  Grid,
+  TechPanel,
+  TransparentLink,
+} from '@components';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import { useDisclosure } from '@chakra-ui/react';
-import { Collapse, Box } from '@chakra-ui/react';
-
 import {
-  SiGo,
-  SiKubernetes,
-  SiElixir,
-  SiPostgresql,
-  SiTypescript,
-  SiAmazonaws,
-  SiGooglecloud,
-  SiTerraform,
-  SiReact,
-  SiNextdotjs,
-  SiPython,
-  SiGraphql,
-} from 'react-icons/si';
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  useDisclosure,
+  Collapse,
+  Box,
+} from '@chakra-ui/react';
 import { getPosts, Post } from '@posts';
-import { TransparentLink } from '@components';
 
 interface Job {
   job: Post;
@@ -86,60 +85,6 @@ interface ExperienceProps {
 }
 
 const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
-  const stacks = React.useMemo(
-    () => [
-      {
-        Icon: SiGo,
-        url: 'https://golang.org/',
-      },
-      {
-        Icon: SiKubernetes,
-        url: 'https://kubernetes.io/',
-      },
-      {
-        Icon: SiTypescript,
-        url: 'https://www.typescriptlang.org/',
-      },
-      {
-        Icon: SiReact,
-        url: 'https://reactjs.org/',
-      },
-      {
-        Icon: SiGraphql,
-        url: 'https://graphql.org/',
-      },
-      {
-        Icon: SiAmazonaws,
-        url: 'https://aws.amazon.com/',
-      },
-      {
-        Icon: SiNextdotjs,
-        url: 'https://nextjs.org/',
-      },
-      {
-        Icon: SiElixir,
-        url: 'https://elixir-lang.org/',
-      },
-      {
-        Icon: SiGooglecloud,
-        url: 'https://cloud.google.com/',
-      },
-      {
-        Icon: SiTerraform,
-        url: 'https://www.terraform.io/',
-      },
-      {
-        Icon: SiPostgresql,
-        url: 'https://www.postgresql.org/',
-      },
-      {
-        Icon: SiPython,
-        url: 'https://www.python.org/',
-      },
-    ],
-    [],
-  );
-
   return (
     <Container>
       <Head>
@@ -166,26 +111,39 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
         alignContent="center"
         alignItems="center"
         textAlign="center"
-        width="100%"
+        minHeight="500px"
       >
         <Title fontSize="40px" as="h2">
-          Technologies I frequently use
+          Technologies I Have Used
         </Title>
-        <Grid
-          gridTemplateColumns={['repeat(3 , 1fr)', 'repeat(6 , 1fr)']}
-          gridGap="1rem"
-          justifyItems="center"
-          maxWidth="40rem"
+        <Tabs
+          orientation="vertical"
+          variant="soft-rounded"
+          colorScheme="gray"
+          width="100%"
         >
-          {stacks.map(({ Icon, url }, i) => (
-            <Link href={url} key={url}>
-              <Card key={i}>
-                <Icon size="2rem" />
-              </Card>
-            </Link>
-          ))}
-        </Grid>
+          <TabList mt="4rem" mr="1rem">
+            <Tab>Highlights</Tab>
+            <Tab>Languages</Tab>
+            <Tab>Frameworks</Tab>
+            <Tab>Databases</Tab>
+            <Tab>Technologies</Tab>
+            <Tab>Tools</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              <TechPanel noob={['c#']} pro={['postgres']} />
+            </TabPanel>
+            <TabPanel>
+              <p>two!</p>
+            </TabPanel>
+            <TabPanel>
+              <TechPanel noob={['neo4j']} pro={['python']} />
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       </Container>
+
       <Container
         alignContent="center"
         alignItems="center"
