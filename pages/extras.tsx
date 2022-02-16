@@ -48,7 +48,7 @@ const Extracurriculars = ({ extras }: ExtraCurrProps): JSX.Element => {
               borderBottom="1px solid rgba(0,0,0,0.1)"
             >
               <Container width="100%">
-                <Text>0{extras.length - i}</Text>
+                <Text>0{data.order}</Text>
               </Container>
               <Grid width="100%" gridTemplateColumns="4fr 1fr">
                 <Container
@@ -64,7 +64,7 @@ const Extracurriculars = ({ extras }: ExtraCurrProps): JSX.Element => {
                     gridGap="1rem"
                   >
                     <Title fontSize="1.5rem" margin={0} as="h3">
-                      {data.post}
+                      {data.title}
                     </Title>
                   </Grid>
                   <Grid
@@ -80,7 +80,7 @@ const Extracurriculars = ({ extras }: ExtraCurrProps): JSX.Element => {
                       margin={0}
                       as="h5"
                     >
-                      {data.title}
+                      {data.company}
                     </Title>
                     <Text
                       fontSize="smaller"
@@ -90,7 +90,7 @@ const Extracurriculars = ({ extras }: ExtraCurrProps): JSX.Element => {
                       {data.date}
                     </Text>
                   </Grid>
-                  <Text fontSize="1rem">{data.caption}</Text>
+                  <Text fontSize="1rem">{data.description}</Text>
                 </Container>
               </Grid>
             </Grid>
@@ -104,7 +104,8 @@ const Extracurriculars = ({ extras }: ExtraCurrProps): JSX.Element => {
 export const getStaticProps: GetStaticProps = async () => {
   const extras = await getPosts('extras');
   extras.sort((a, b) =>
-    b.data.date.toString().localeCompare(a.data.date.toString()),
+    // b.data.date.toString().localeCompare(a.data.date.toString()),
+    a.data.order < b.data.order ? -1 : 1,
   );
 
   return {
