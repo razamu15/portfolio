@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { Title, Text, Container, Grid } from '@components';
+import { Title, Text, Container, Grid, getIcons } from '@components';
 import { Button } from '@chakra-ui/react';
 import { SiNextdotjs } from 'react-icons/si';
 import { GetStaticProps } from 'next/types';
@@ -11,8 +11,6 @@ interface AboutProps {
 }
 
 const About = ({ timeline }: AboutProps): JSX.Element => {
-  console.log(timeline);
-
   return (
     <Container>
       <Head>
@@ -44,11 +42,7 @@ const About = ({ timeline }: AboutProps): JSX.Element => {
                 return (
                   <div key={i} className="timeline-entry">
                     <dt />
-                    <Grid
-                      width="100%"
-                      marginTop="-30px"
-                      gridTemplateColumns="7fr 1fr"
-                    >
+                    <Grid width="100%" marginTop="-30px">
                       <Container
                         width="100%"
                         alignItems="flex-start"
@@ -89,14 +83,14 @@ const About = ({ timeline }: AboutProps): JSX.Element => {
                         </Grid>
                         <p className="learned">
                           Learned:
-                          {entry.data.new.map((skill: String) => {
+                          {getIcons(entry.data.new).map((tecObj) => {
                             return (
                               <Button
-                                leftIcon={<SiNextdotjs />}
+                                leftIcon={<tecObj.Icon />}
                                 colorScheme="gray"
                                 variant="ghost"
                               >
-                                {skill}
+                                {tecObj.name}
                               </Button>
                             );
                           })}

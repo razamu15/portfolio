@@ -66,7 +66,7 @@ const techIcons = {
   access: {
     Icon: SiMicrosoftaccess,
     url: 'https://www.microsoft.com/en-ca/microsoft-365/access',
-    name: 'Microsoft Access',
+    name: 'Access',
   },
   webrtc: {
     Icon: SiWebrtc,
@@ -396,4 +396,12 @@ function TechPanel({ noob, pro }: PanelProps) {
   );
 }
 
-export default TechPanel;
+function getIcons(stack: String[]) {
+  let result = [];
+  stack.forEach((tech) => {
+    result.push(techIcons[tech]);
+  });
+  return result;
+}
+
+export { TechPanel, getIcons };

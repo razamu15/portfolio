@@ -175,7 +175,7 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
             </TabPanel>
             <TabPanel>
               <TechPanel
-                noob={['neo4j', 'sqlserver', 'sqlite']}
+                noob={['neo4j', 'sqlserver', 'sqlite', 'access']}
                 pro={['postgres', 'mysql', 'redis', 'mongo']}
               />
             </TabPanel>
@@ -217,7 +217,7 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const experiences = await getPosts('experiences');
+  const experiences = await getPosts('t_experiences');
   experiences.sort((a, b) =>
     b.data.date.toString().localeCompare(a.data.date.toString()),
   );

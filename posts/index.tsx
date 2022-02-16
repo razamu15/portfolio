@@ -56,7 +56,7 @@ const getSummary = (): Promise<Post[]> => {
 };
 
 const getTimeline = (): Promise<Post[]> => {
-  const contentGlob = path.join(baseDir, './**/*.mdx');
+  const contentGlob = path.join(baseDir, './t_*/*.mdx');
   const files = glob.sync(contentGlob);
 
   return Promise.all(

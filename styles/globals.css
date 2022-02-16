@@ -70,7 +70,7 @@ a:hover {
 
 .timeline-entry {
   margin-left: 2rem;
-  padding: 1rem 0rem;
+  padding: 1.5rem 0rem;
 }
 
 .timeline-entry > dt:before {
@@ -137,7 +137,7 @@ a:hover {
 }
 
 .reason {
-  /* margin: 1rem 0rem; */
-  /* max-width: 600px; */
   font-size: 1rem;
+  margin: 0.5rem 0rem;
+  /* max-width: 600px; */
 }

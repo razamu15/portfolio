@@ -23,6 +23,8 @@ const ProjectImage = styled.img`
 `;
 
 const ProjectContainer = styled(Container)`
+  align-self: stretch;
+
   :hover > * img {
     transform: scale(1.03);
   }
@@ -93,7 +95,7 @@ const Projects = ({ projects }: ProjectProps): JSX.Element => (
               {data.caption}
             </Text>
             <List marginY="1rem">
-              {data.tags.map((tag: string) => (
+              {data.skills.map((tag: string) => (
                 <ProjectTag key={tag}>{tag}</ProjectTag>
               ))}
             </List>
@@ -105,7 +107,7 @@ const Projects = ({ projects }: ProjectProps): JSX.Element => (
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const projects = await getPosts('projects');
+  const projects = await getPosts('t_projects');
 
   return {
     props: {
