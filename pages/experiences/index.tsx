@@ -60,39 +60,20 @@ const JobEntry = ({ job, order }: Job) => {
                   {job.data.date}
                 </Text>
               </Grid>
-              <Text fontSize="1rem">{job.data.caption}</Text>
             </Container>
             <Text fontSize="1.5rem">{isOpen ? <>&darr;</> : <>&rarr;</>}</Text>
           </Grid>
         </Grid>
         <Collapse className="exp-details" in={isOpen} animateOpacity>
           <List width="100%" spacing={3}>
-            <ListItem className="exp-entry">
-              <FaChevronRight style={{ margin: '0px' }} color="green.500" />
-              <p className="work">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit
-              </p>
-            </ListItem>
-            <ListItem className="exp-entry">
-              <FaChevronRight color="green.500" />
-              <p className="work">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem
-                ipsum dolor sit amet
-              </p>
-            </ListItem>
-            <ListItem className="exp-entry">
-              <FaChevronRight color="green.500" />
-              <p className="work">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem
-                ipsum dolor sit amet, consectetur adipisicing elit
-              </p>
-            </ListItem>
-            <ListItem className="exp-entry">
-              <FaChevronRight color="green.500" />
-              <p className="work">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit
-              </p>
-            </ListItem>
+            {job.data.description.map((bullet: String) => {
+              return (
+                <ListItem className="exp-entry">
+                  <FaChevronRight style={{ margin: '0px' }} color="green.500" />
+                  <p className="work">{bullet}</p>
+                </ListItem>
+              );
+            })}
           </List>
         </Collapse>
       </TransparentLink>
@@ -126,7 +107,7 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
       </Container>
 
       <Container
-        padding="4rem 3rem"
+        padding="4rem 13%"
         gridGap="2rem"
         alignContent="center"
         alignItems="center"
@@ -204,7 +185,7 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
         alignItems="center"
         textAlign="center"
         width="100%"
-        paddingBottom="4rem"
+        padding="2rem 10% 4rem 10%"
         gridGap="3rem"
       >
         <Title fontSize="40px" as="h2">
