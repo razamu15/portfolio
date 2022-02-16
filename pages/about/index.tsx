@@ -25,7 +25,7 @@ const About = (): JSX.Element => {
         </Container>
       </Container>
 
-      <Container paddingY="4rem" width="100%" gridGap="3rem">
+      <Container width="100%" padding="4rem 13%" gridGap="3rem">
         <Title fontSize="40px" as="h2">
           My Learning Journey
         </Title>

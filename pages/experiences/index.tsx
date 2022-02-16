@@ -65,37 +65,37 @@ const JobEntry = ({ job, order }: Job) => {
             <Text fontSize="1.5rem">{isOpen ? <>&darr;</> : <>&rarr;</>}</Text>
           </Grid>
         </Grid>
+        <Collapse className="exp-details" in={isOpen} animateOpacity>
+          <List width="100%" spacing={3}>
+            <ListItem className="exp-entry">
+              <FaChevronRight style={{ margin: '0px' }} color="green.500" />
+              <p className="work">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </p>
+            </ListItem>
+            <ListItem className="exp-entry">
+              <FaChevronRight color="green.500" />
+              <p className="work">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem
+                ipsum dolor sit amet
+              </p>
+            </ListItem>
+            <ListItem className="exp-entry">
+              <FaChevronRight color="green.500" />
+              <p className="work">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem
+                ipsum dolor sit amet, consectetur adipisicing elit
+              </p>
+            </ListItem>
+            <ListItem className="exp-entry">
+              <FaChevronRight color="green.500" />
+              <p className="work">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              </p>
+            </ListItem>
+          </List>
+        </Collapse>
       </TransparentLink>
-      <Collapse className="exp-details" in={isOpen} animateOpacity>
-        <List width="100%" spacing={3}>
-          <ListItem className="exp-entry">
-            <FaChevronRight style={{ margin: '0px' }} color="green.500" />
-            <p className="work">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit
-            </p>
-          </ListItem>
-          <ListItem className="exp-entry">
-            <FaChevronRight color="green.500" />
-            <p className="work">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem
-              ipsum dolor sit amet
-            </p>
-          </ListItem>
-          <ListItem className="exp-entry">
-            <FaChevronRight color="green.500" />
-            <p className="work">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem
-              ipsum dolor sit amet, consectetur adipisicing elit
-            </p>
-          </ListItem>
-          <ListItem className="exp-entry">
-            <FaChevronRight color="green.500" />
-            <p className="work">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit
-            </p>
-          </ListItem>
-        </List>
-      </Collapse>
     </>
   );
 };
@@ -132,7 +132,6 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
         alignItems="center"
         textAlign="center"
         minHeight="500px"
-        // width="100%"
       >
         <Title fontSize="40px" as="h2">
           Technologies I Have Used
