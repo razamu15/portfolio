@@ -86,7 +86,7 @@ const Home = ({ summary }: HomeProps): JSX.Element => {
             justifyItems="stretch"
             alignItems="stretch"
           >
-            <Link href="mailto:hello@shellbear.me">
+            <Link href="/about">
               <Button width="100%">
                 <motion.span
                   initial={{ display: 'inline-block' }}

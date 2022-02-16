@@ -316,8 +316,8 @@ const techIcons = {
 import { Container, Grid, Link, Card } from '@components';
 
 export interface PanelProps {
-  noob: [String];
-  pro: [String];
+  noob: String[];
+  pro: String[];
 }
 
 function TechPanel({ noob, pro }: PanelProps) {

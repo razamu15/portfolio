@@ -104,7 +104,7 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
   return (
     <Container>
       <Head>
-        <title>Experiences</title>
+        <title>Work Experiences</title>
       </Head>
       <Container alignContent="center" alignItems="center">
         <Title fontSize={['3rem', '4rem']} as="h2">

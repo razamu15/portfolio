@@ -72,7 +72,7 @@ const Links = (props: BtnProps): JSX.Element => (
     />
     <NavLink
       href="/experiences"
-      text="Experiences"
+      text="Experience"
       isActive={props.path.startsWith('/experiences') ? true : false}
     />
     <NavLink
