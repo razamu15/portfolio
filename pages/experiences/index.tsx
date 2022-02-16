@@ -56,12 +56,27 @@ const JobEntry = ({ job, order }: Job) => {
                 <Title fontSize="1.5rem" margin={0} as="h3">
                   {job.data.title}
                 </Title>
+              </Grid>
+              <Grid
+                width="100%"
+                gridTemplateColumns="repeat(2, auto)"
+                justifyItems="flex-start"
+                justifyContent="flex-start"
+                gridGap="1rem"
+              >
+                <Title
+                  fontSize="1.1rem"
+                  fontWeight="bold"
+                  margin="0.5rem"
+                  as="h5"
+                >
+                  {job.data.company}
+                </Title>
                 <Text fontSize="smaller" margin={0} color="rgba(0, 0, 0, 0.1)">
                   {job.data.date}
                 </Text>
               </Grid>
             </Container>
-            <Text fontSize="1.5rem">{isOpen ? <>&darr;</> : <>&rarr;</>}</Text>
           </Grid>
         </Grid>
         <Collapse className="exp-details" in={isOpen} animateOpacity>
