@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge } from '@chakra-ui/react';
+import { Badge, Text } from '@chakra-ui/react';
 
 import {
   SiGo,
@@ -15,9 +15,97 @@ import {
   SiGraphql,
   SiCsharp,
   SiNeo4J,
+  SiJava,
+  SiC,
+  SiJavascript,
+  SiDocker,
+  SiHtml5,
+  SiCss3,
+  SiGatsby,
+  SiMongodb,
+  SiMysql,
+  SiRedis,
+  SiNodedotjs,
+  SiNginx,
+  SiNetlify,
+  SiDigitalocean,
+  SiApachekafka,
+  SiGnubash,
+  SiExpress,
+  SiFirebase,
+  SiLinux,
+  SiJquery,
+  SiFlask,
+  SiGit,
+  SiMicrosoftsqlserver,
+  SiSqlite,
+  SiSocketdotio,
+  SiPostman,
+  SiInsomnia,
+  SiIntellijidea,
+  SiVisualstudiocode,
+  SiApachejmeter,
+  SiAzuredevops,
+  SiVmware,
+  SiJirasoftware,
+  SiTeamcity,
 } from 'react-icons/si';
 
+import { GiCamel } from 'react-icons/gi';
+import { BsCode } from 'react-icons/bs';
+import { VscAzure } from 'react-icons/vsc';
+
 const techIcons = {
+  template: {
+    Icon: null,
+    url: '',
+    name: 'template',
+  },
+  teamcity: {
+    Icon: SiTeamcity,
+    url: 'https://www.jetbrains.com/teamcity/',
+    name: 'Teamcity',
+  },
+  jira: {
+    Icon: SiJirasoftware,
+    url: 'https://www.atlassian.com/software/jira',
+    name: 'Jira',
+  },
+  vmware: {
+    Icon: SiVmware,
+    url: 'https://www.vmware.com/ca.html',
+    name: 'Vmware',
+  },
+  azuredevops: {
+    Icon: SiAzuredevops,
+    url: 'https://azure.microsoft.com/en-us/services/devops/#overview',
+    name: 'Azure Devops',
+  },
+  jmeter: {
+    Icon: SiApachejmeter,
+    url: 'https://jmeter.apache.org/',
+    name: 'Apache Jmeter',
+  },
+  vscode: {
+    Icon: SiVisualstudiocode,
+    url: 'https://code.visualstudio.com/',
+    name: 'VsCode',
+  },
+  insomnia: {
+    Icon: SiInsomnia,
+    url: 'https://insomnia.rest/',
+    name: 'Insomnia',
+  },
+  intellij: {
+    Icon: SiIntellijidea,
+    url: 'https://www.jetbrains.com/idea/',
+    name: 'Intellij',
+  },
+  postman: {
+    Icon: SiPostman,
+    url: 'https://www.postman.com/',
+    name: 'Postman',
+  },
   golang: {
     Icon: SiGo,
     url: 'https://golang.org/',
@@ -75,18 +163,153 @@ const techIcons = {
   },
   'c#': {
     Icon: SiCsharp,
-    url: 'https://www.python.org/',
-    name: 'c#',
+    url: 'https://www.microsoft.com/en-us/download/details.aspx?id=7029',
+    name: 'C#',
   },
   neo4j: {
     Icon: SiNeo4J,
-    url: 'https://www.python.org/',
+    url: 'https://neo4j.com/',
     name: 'Neo4J',
   },
-  template: {
-    Icon: null,
-    url: 'https://www.',
-    name: 'template',
+  perl: {
+    Icon: GiCamel,
+    url: 'https://www.perl.org/',
+    name: 'Perl',
+  },
+  matlab: {
+    Icon: BsCode,
+    url: 'https://www.mathworks.com/products/matlab.html',
+    name: 'Matlab',
+  },
+  java: {
+    Icon: SiJava,
+    url: 'https://www.java.com/en/',
+    name: 'Java',
+  },
+  javascript: {
+    Icon: SiJavascript,
+    url: 'https://www.javascript.com/',
+    name: 'Javascript',
+  },
+  c: {
+    Icon: SiC,
+    url: 'https://en.wikipedia.org/wiki/C_(programming_language)#:~:text=C%20(%2F%CB%88si%CB%90%2F,efficiently%20to%20typical%20machine%20instructions.',
+    name: 'C',
+  },
+  html: {
+    Icon: SiHtml5,
+    url: 'https://html.spec.whatwg.org/',
+    name: 'HTML',
+  },
+  css: {
+    Icon: SiCss3,
+    url: 'https://www.w3.org/Style/CSS/Overview.en.html',
+    name: 'CSS',
+  },
+  nginx: {
+    Icon: SiNginx,
+    url: 'https://www.nginx.com/',
+    name: 'NGINX',
+  },
+  netlify: {
+    Icon: SiNetlify,
+    url: 'https://www.netlify.com/',
+    name: 'Netlify',
+  },
+  digitalocean: {
+    Icon: SiDigitalocean,
+    url: 'https://www.digitalocean.com/',
+    name: 'DigitalOcean',
+  },
+  azure: {
+    Icon: VscAzure,
+    url: 'https://azure.microsoft.com/en-ca/',
+    name: 'azure',
+  },
+  kafka: {
+    Icon: SiApachekafka,
+    url: 'https://kafka.apache.org/',
+    name: 'Kafka',
+  },
+  bash: {
+    Icon: SiGnubash,
+    url: 'https://www.gnu.org/software/bash/',
+    name: 'Bash',
+  },
+  linux: {
+    Icon: SiLinux,
+    url: 'https://www.linux.org/',
+    name: 'Linux',
+  },
+  firebase: {
+    Icon: SiFirebase,
+    url: 'https://firebase.google.com/',
+    name: 'Firebase',
+  },
+  docker: {
+    Icon: SiDocker,
+    url: 'https://www.docker.com/',
+    name: 'Docker',
+  },
+  redis: {
+    Icon: SiRedis,
+    url: 'https://redis.io/',
+    name: 'Redis',
+  },
+  mongo: {
+    Icon: SiMongodb,
+    url: 'https://www.mongodb.com/',
+    name: 'MongoDB',
+  },
+  mysql: {
+    Icon: SiMysql,
+    url: 'https://www.mysql.com/',
+    name: 'MySQL',
+  },
+  node: {
+    Icon: SiNodedotjs,
+    url: 'https://nodejs.org/en/',
+    name: 'NodeJS',
+  },
+  express: {
+    Icon: SiExpress,
+    url: 'https://expressjs.com/',
+    name: 'ExpressJS',
+  },
+  jquery: {
+    Icon: SiJquery,
+    url: 'https://jquery.com/',
+    name: 'jQuery',
+  },
+  gatsby: {
+    Icon: SiGatsby,
+    url: 'https://www.gatsbyjs.com/',
+    name: 'GatsbyJS',
+  },
+  flask: {
+    Icon: SiFlask,
+    url: 'https://flask.palletsprojects.com/en/2.0.x/',
+    name: 'Flask',
+  },
+  git: {
+    Icon: SiGit,
+    url: 'https://git-scm.com/',
+    name: 'Git',
+  },
+  sqlserver: {
+    Icon: SiMicrosoftsqlserver,
+    url: 'https://www.microsoft.com/en-us/sql-server/sql-server-2019',
+    name: 'SQL Server',
+  },
+  sqlite: {
+    Icon: SiSqlite,
+    url: 'https://sqlite.org/index.html',
+    name: 'Sqlite',
+  },
+  socketio: {
+    Icon: SiSocketdotio,
+    url: 'https://socket.io/',
+    name: 'Socket.io',
   },
 };
 
@@ -110,18 +333,23 @@ function TechPanel({ noob, pro }: PanelProps) {
           ml="1"
           mb="1rem"
           fontSize="0.8em"
-          colorScheme="green"
           borderRadius="lg"
+          colorScheme="cyan"
         >
-          Beginner
+          Novice
         </Badge>
         <div className="tech-level">
           {noob.map((tech, i) => {
-            let Icon = techIcons[tech].Icon;
+            let tecObj = techIcons[tech];
             return (
-              <Card key={i}>
-                <Icon size="2rem" />
-              </Card>
+              <Link href={tecObj.url} key={i}>
+                <Card key={i}>
+                  <tecObj.Icon size="2rem" />
+                  <Text fontSize="xs" marginTop="3px">
+                    {tecObj.name}
+                  </Text>
+                </Card>
+              </Link>
             );
           })}
         </div>
@@ -131,19 +359,21 @@ function TechPanel({ noob, pro }: PanelProps) {
           ml="1"
           mb="1rem"
           fontSize="0.8em"
-          colorScheme="green"
+          colorScheme="purple"
           borderRadius="lg"
         >
           Advanced
         </Badge>
         <div className="tech-level">
           {pro.map((tech, i) => {
-            let Icon = techIcons[tech].Icon;
-            let link = techIcons[tech].url;
+            let tecObj = techIcons[tech];
             return (
-              <Link href={link} key={i}>
-                <Card>
-                  <Icon size="2rem" />
+              <Link href={tecObj.url} key={i}>
+                <Card key={i}>
+                  <tecObj.Icon size="2rem" />
+                  <Text fontSize="xs" marginTop="3px">
+                    {tecObj.name}
+                  </Text>
                 </Card>
               </Link>
             );

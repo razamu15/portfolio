@@ -126,12 +126,13 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
       </Container>
 
       <Container
-        paddingY="4rem"
+        padding="4rem 3rem"
         gridGap="2rem"
         alignContent="center"
         alignItems="center"
         textAlign="center"
         minHeight="500px"
+        // width="100%"
       >
         <Title fontSize="40px" as="h2">
           Technologies I Have Used
@@ -143,22 +144,57 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
           width="100%"
         >
           <TabList mt="4rem" mr="1rem">
-            <Tab>Highlights</Tab>
             <Tab>Languages</Tab>
-            <Tab>Frameworks</Tab>
-            <Tab>Databases</Tab>
             <Tab>Technologies</Tab>
+            <Tab>Databases</Tab>
+            <Tab>Frameworks</Tab>
             <Tab>Tools</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
-              <TechPanel noob={['c#']} pro={['postgres']} />
+              <TechPanel
+                noob={['c#', 'perl', 'matlab', 'typescript', 'golang']}
+                pro={[
+                  'java',
+                  'javascript',
+                  'c',
+                  'python',
+                  'bash',
+                  'html',
+                  'css',
+                ]}
+              />
             </TabPanel>
             <TabPanel>
-              <p>two!</p>
+              <TechPanel
+                noob={['terraform', 'azure', 'nginx', 'digitalocean']}
+                pro={[
+                  'gcp',
+                  'netlify',
+                  'firebase',
+                  'graphql',
+                  'kafka',
+                  'docker',
+                ]}
+              />
             </TabPanel>
             <TabPanel>
-              <TechPanel noob={['neo4j']} pro={['python']} />
+              <TechPanel
+                noob={['neo4j', 'sqlserver', 'sqlite']}
+                pro={['postgres', 'mysql', 'redis', 'mongo']}
+              />
+            </TabPanel>
+            <TabPanel>
+              <TechPanel
+                noob={['next', 'gatsby', 'flask']}
+                pro={['node', 'jquery', 'express', 'react', 'socketio']}
+              />
+            </TabPanel>
+            <TabPanel>
+              <TechPanel
+                noob={['vmware', 'jmeter', 'insomnia', 'teamcity', 'jira']}
+                pro={['intellij', 'vscode', 'postman', 'git']}
+              />
             </TabPanel>
           </TabPanels>
         </Tabs>

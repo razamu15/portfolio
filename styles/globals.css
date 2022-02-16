@@ -122,3 +122,16 @@ a:hover {
   width: 90%;
   text-align: left;
 }
+
+.learned {
+  margin-bottom: 0;
+  margin-top:1rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.reason {
+  /* margin: 1rem 0rem; */
+  max-width: 600px;
+  font-size: 1rem;
+}

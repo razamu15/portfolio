@@ -1,88 +1,18 @@
 import React from 'react';
-import { Title, Text, Container, Grid, Link, Card } from '@components';
+import { Title, Text, Container, Grid } from '@components';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-
-import {
-  SiGo,
-  SiKubernetes,
-  SiElixir,
-  SiPostgresql,
-  SiTypescript,
-  SiAmazonaws,
-  SiGooglecloud,
-  SiTerraform,
-  SiReact,
-  SiNextdotjs,
-  SiPython,
-  SiGraphql,
-} from 'react-icons/si';
 import { getPosts, Post } from '@posts';
-import { TransparentLink } from '@components';
 
-interface AboutProps {
-  experiences: Post[];
+interface ExtraCurrProps {
+  extras: Post[];
 }
 
-const About = ({ experiences }: AboutProps): JSX.Element => {
-  const stacks = React.useMemo(
-    () => [
-      {
-        Icon: SiGo,
-        url: 'https://golang.org/',
-      },
-      {
-        Icon: SiKubernetes,
-        url: 'https://kubernetes.io/',
-      },
-      {
-        Icon: SiTypescript,
-        url: 'https://www.typescriptlang.org/',
-      },
-      {
-        Icon: SiReact,
-        url: 'https://reactjs.org/',
-      },
-      {
-        Icon: SiGraphql,
-        url: 'https://graphql.org/',
-      },
-      {
-        Icon: SiAmazonaws,
-        url: 'https://aws.amazon.com/',
-      },
-      {
-        Icon: SiNextdotjs,
-        url: 'https://nextjs.org/',
-      },
-      {
-        Icon: SiElixir,
-        url: 'https://elixir-lang.org/',
-      },
-      {
-        Icon: SiGooglecloud,
-        url: 'https://cloud.google.com/',
-      },
-      {
-        Icon: SiTerraform,
-        url: 'https://www.terraform.io/',
-      },
-      {
-        Icon: SiPostgresql,
-        url: 'https://www.postgresql.org/',
-      },
-      {
-        Icon: SiPython,
-        url: 'https://www.python.org/',
-      },
-    ],
-    [],
-  );
-
+const Extracurriculars = ({ extras }: ExtraCurrProps): JSX.Element => {
   return (
     <Container>
       <Head>
-        <title>About</title>
+        <title>Extracurriculars</title>
       </Head>
       <Container alignContent="center" alignItems="center">
         <Title fontSize={['3rem', '4rem']} as="h2">
@@ -108,7 +38,7 @@ const About = ({ experiences }: AboutProps): JSX.Element => {
         gridGap="3rem"
       >
         <Container width="100%">
-          {experiences.map(({ data }, i) => (
+          {extras.map(({ data }, i) => (
             <Grid
               key={i}
               gridTemplateColumns="1fr 4fr"
@@ -118,7 +48,7 @@ const About = ({ experiences }: AboutProps): JSX.Element => {
               borderBottom="1px solid rgba(0,0,0,0.1)"
             >
               <Container width="100%">
-                <Text>0{experiences.length - i}</Text>
+                <Text>0{extras.length - i}</Text>
               </Container>
               <Grid width="100%" gridTemplateColumns="4fr 1fr">
                 <Container
@@ -172,16 +102,16 @@ const About = ({ experiences }: AboutProps): JSX.Element => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const experiences = await getPosts('extras');
-  experiences.sort((a, b) =>
+  const extras = await getPosts('extras');
+  extras.sort((a, b) =>
     b.data.date.toString().localeCompare(a.data.date.toString()),
   );
 
   return {
     props: {
-      experiences,
+      extras,
     },
   };
 };
 
-export default About;
+export default Extracurriculars;

@@ -1,6 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-import { Title, Text, Container } from '@components';
+import { Title, Text, Container, Grid } from '@components';
+import { Button } from '@chakra-ui/react';
+import { SiNextdotjs } from 'react-icons/si';
 
 const About = (): JSX.Element => {
   return (
@@ -31,36 +33,67 @@ const About = (): JSX.Element => {
           <div className="timeline-bg">
             <dl>
               <div className="timeline-entry">
-                <dt>1066</dt>
-                <dd>
-                  {' '}
-                  September. Harald Hardrada, King of Norway, invades England
-                </dd>
-                <dd>
-                  {' '}
-                  October. William of Normandy defeats and kills Harold II at
-                  Hastings
-                </dd>
-                <dd>
-                  {' '}
-                  October. William of Normandy defeats and kills Harold II at
-                  Hastings
-                </dd>
-                <dd>
-                  {' '}
-                  October. William of Normandy defeats and kills Harold II at
-                  Hastings
-                </dd>
-                <dd>
-                  {' '}
-                  October. William of Normandy defeats and kills Harold II at
-                  Hastings
-                </dd>
-                <dd>
-                  {' '}
-                  October. William of Normandy defeats and kills Harold II at
-                  Hastings
-                </dd>
+                <dt />
+                <Grid
+                  width="100%"
+                  marginTop="-30px"
+                  gridTemplateColumns="7fr 1fr"
+                >
+                  <Container
+                    width="100%"
+                    alignItems="flex-start"
+                    textAlign="start"
+                  >
+                    <Grid
+                      width="100%"
+                      justifyItems="flex-start"
+                      justifyContent="flex-start"
+                      gridGap="1rem"
+                    >
+                      <Title fontSize="1.5rem" margin={0} as="h3">
+                        Portfolio Website
+                      </Title>
+                    </Grid>
+                    <Grid
+                      width="100%"
+                      gridTemplateColumns="repeat(2, auto)"
+                      justifyItems="flex-start"
+                      justifyContent="flex-start"
+                      gridGap="1rem"
+                    >
+                      <Title
+                        fontSize="1rem"
+                        fontWeight="normal"
+                        margin={0}
+                        as="h5"
+                      >
+                        Weekend Project
+                      </Title>
+                      <Text
+                        fontSize="smaller"
+                        margin={0}
+                        color="rgba(0, 0, 0, 0.1)"
+                      >
+                        Feb 2022
+                      </Text>
+                    </Grid>
+                    <p className="learned">
+                      Learned:
+                      <Button
+                        leftIcon={<SiNextdotjs />}
+                        colorScheme="gray"
+                        variant="ghost"
+                      >
+                        NextJs
+                      </Button>
+                    </p>
+                    <p className="reason">
+                      I built this because I had been thinking about a portfolio
+                      for a while and heard a <br /> lot of good things about
+                      NextJs so wanted to try it out!
+                    </p>
+                  </Container>
+                </Grid>
               </div>
 
               <div className="timeline-entry">
