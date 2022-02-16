@@ -3,8 +3,16 @@ import Head from 'next/head';
 import { Title, Text, Container, Grid } from '@components';
 import { Button } from '@chakra-ui/react';
 import { SiNextdotjs } from 'react-icons/si';
+import { GetStaticProps } from 'next/types';
+import { getTimeline, Post } from '@posts';
 
-const About = (): JSX.Element => {
+interface AboutProps {
+  timeline: Post[];
+}
+
+const About = ({ timeline }: AboutProps): JSX.Element => {
+  console.log(timeline);
+
   return (
     <Container>
       <Head>
@@ -25,132 +33,101 @@ const About = (): JSX.Element => {
         </Container>
       </Container>
 
-      <Container width="100%" padding="4rem 13%" gridGap="3rem">
+      <Container width="100%" padding="4rem 15%" gridGap="3rem">
         <Title fontSize="40px" as="h2">
           My Learning Journey
         </Title>
         <Container width="100%">
           <div className="timeline-bg">
             <dl>
-              <div className="timeline-entry">
-                <dt />
-                <Grid
-                  width="100%"
-                  marginTop="-30px"
-                  gridTemplateColumns="7fr 1fr"
-                >
-                  <Container
-                    width="100%"
-                    alignItems="flex-start"
-                    textAlign="start"
-                  >
+              {timeline.map((entry: Post, i) => {
+                return (
+                  <div key={i} className="timeline-entry">
+                    <dt />
                     <Grid
                       width="100%"
-                      justifyItems="flex-start"
-                      justifyContent="flex-start"
-                      gridGap="1rem"
+                      marginTop="-30px"
+                      gridTemplateColumns="7fr 1fr"
                     >
-                      <Title fontSize="1.5rem" margin={0} as="h3">
-                        Portfolio Website
-                      </Title>
+                      <Container
+                        width="100%"
+                        alignItems="flex-start"
+                        textAlign="start"
+                      >
+                        <Grid
+                          width="100%"
+                          justifyItems="flex-start"
+                          justifyContent="flex-start"
+                          gridGap="1rem"
+                        >
+                          <Title fontSize="1.5rem" margin={0} as="h3">
+                            {entry.data.title}
+                          </Title>
+                        </Grid>
+                        <Grid
+                          width="100%"
+                          gridTemplateColumns="repeat(2, auto)"
+                          justifyItems="flex-start"
+                          justifyContent="flex-start"
+                          gridGap="1rem"
+                        >
+                          <Title
+                            fontSize="1rem"
+                            fontWeight="normal"
+                            margin={0}
+                            as="h5"
+                          >
+                            {entry.data.type}
+                          </Title>
+                          <Text
+                            fontSize="smaller"
+                            margin={0}
+                            color="rgba(0, 0, 0, 0.1)"
+                          >
+                            {entry.data.date}
+                          </Text>
+                        </Grid>
+                        <p className="learned">
+                          Learned:
+                          {entry.data.new.map((skill: String) => {
+                            return (
+                              <Button
+                                leftIcon={<SiNextdotjs />}
+                                colorScheme="gray"
+                                variant="ghost"
+                              >
+                                {skill}
+                              </Button>
+                            );
+                          })}
+                        </p>
+                        <p className="reason">{entry.data.learned}</p>
+                      </Container>
                     </Grid>
-                    <Grid
-                      width="100%"
-                      gridTemplateColumns="repeat(2, auto)"
-                      justifyItems="flex-start"
-                      justifyContent="flex-start"
-                      gridGap="1rem"
-                    >
-                      <Title
-                        fontSize="1rem"
-                        fontWeight="normal"
-                        margin={0}
-                        as="h5"
-                      >
-                        Weekend Project
-                      </Title>
-                      <Text
-                        fontSize="smaller"
-                        margin={0}
-                        color="rgba(0, 0, 0, 0.1)"
-                      >
-                        Feb 2022
-                      </Text>
-                    </Grid>
-                    <p className="learned">
-                      Learned:
-                      <Button
-                        leftIcon={<SiNextdotjs />}
-                        colorScheme="gray"
-                        variant="ghost"
-                      >
-                        NextJs
-                      </Button>
-                    </p>
-                    <p className="reason">
-                      I built this because I had been thinking about a portfolio
-                      for a while and heard a <br /> lot of good things about
-                      NextJs so wanted to try it out!
-                    </p>
-                  </Container>
-                </Grid>
-              </div>
-
-              <div className="timeline-entry">
-                <dt>1070</dt>
-                <dd> William the Conqueror subdues the north of England</dd>
-                <dd> First Norman stone castle is built in Wales</dd>
-              </div>
-
-              <div className="timeline-entry">
-                <dt>1076</dt>
-                <dd>
-                  {' '}
-                  &#8216;Revolt of the Earls&#8217; ends with the execution of
-                  Waltheof, Earl of Northumbria
-                </dd>
-              </div>
-
-              <div className="timeline-entry">
-                <dt>1077</dt>
-                <dd>
-                  {' '}
-                  Bayeux Tapestry illustrating the Battle of Hastings is
-                  completed
-                </dd>
-              </div>
-
-              <div className="timeline-entry">
-                <dt>1085</dt>
-                <dd>
-                  {' '}
-                  Domesday Book is instituted to survey the English lands of
-                  William the Conqueror
-                </dd>
-              </div>
-
-              <div className="timeline-entry">
-                <dt>1086</dt>
-                <dd>
-                  {' '}
-                  Landholders swear loyalty to William the Conqueror at
-                  Salisbury
-                </dd>
-              </div>
-
-              <div className="timeline-entry">
-                <dt>1087</dt>
-                <dd> William the Conqueror dies at Rouen, Normandy</dd>
-              </div>
-
-              <dt>1087</dt>
-              <dd> William II is crowned at Westminster Abbey</dd>
+                  </div>
+                );
+              })}
             </dl>
           </div>
         </Container>
       </Container>
     </Container>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  let timeline = await getTimeline();
+  timeline = timeline
+    .filter((ele) => ele.data.journey)
+    .sort((a, b) =>
+      b.data.date.toString().localeCompare(a.data.date.toString()),
+    );
+
+  return {
+    props: {
+      timeline,
+    },
+  };
 };
 
 export default About;

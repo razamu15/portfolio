@@ -49,6 +49,8 @@ import {
   SiVmware,
   SiJirasoftware,
   SiTeamcity,
+  SiWebrtc,
+  SiMicrosoftaccess,
 } from 'react-icons/si';
 
 import { GiCamel } from 'react-icons/gi';
@@ -60,6 +62,16 @@ const techIcons = {
     Icon: null,
     url: '',
     name: 'template',
+  },
+  access: {
+    Icon: SiMicrosoftaccess,
+    url: 'https://www.microsoft.com/en-ca/microsoft-365/access',
+    name: 'Microsoft Access',
+  },
+  webrtc: {
+    Icon: SiWebrtc,
+    url: 'https://webrtc.org/',
+    name: 'Web RTC',
   },
   teamcity: {
     Icon: SiTeamcity,

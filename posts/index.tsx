@@ -55,4 +55,25 @@ const getSummary = (): Promise<Post[]> => {
   );
 };
 
-export { getPosts, getSummary };
+const getTimeline = (): Promise<Post[]> => {
+  const contentGlob = path.join(baseDir, './**/*.mdx');
+  const files = glob.sync(contentGlob);
+
+  return Promise.all(
+    files.map(async (file) => {
+      const basename = path.basename(file);
+      const slug = basename.replace('.mdx', '');
+      const raw = fs.readFileSync(file, 'utf8');
+      const { data, content } = matter(raw);
+
+      data.slug = slug;
+      const source = await serialize(content, {
+        scope: data,
+      });
+
+      return { data, content: content.trim(), source };
+    }),
+  );
+};
+
+export { getPosts, getSummary, getTimeline };
