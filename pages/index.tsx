@@ -13,20 +13,43 @@ import {
 import { Container, Title, Button, Grid, Link, Text } from '@components';
 import styles from '@styles/Home.module.css';
 import { FaChevronRight } from 'react-icons/fa';
+import { GetStaticProps } from 'next/types';
+import { getSummary, Post } from '@posts';
 
-const Home = (): JSX.Element => {
+const BulletList = (props: { entries: String[] }) => {
+  return (
+    <List width="100%" spacing={3}>
+      {props.entries.map((text, i) => {
+        return (
+          <ListItem className="exp-entry" key={i}>
+            <FaChevronRight style={{ margin: '0px' }} color="green.500" />
+            <p className="glance">{text}</p>
+          </ListItem>
+        );
+      })}
+    </List>
+  );
+};
+
+interface HomeProps {
+  summary: Post[];
+}
+
+const Home = ({ summary }: HomeProps): JSX.Element => {
   const glance = React.useRef(null);
+  let glanceData = summary[0].data;
 
   return (
-    <Container>
+    <Container marginTop="-2rem">
       <Container
         justifyContent="center"
         alignContent="center"
         alignItems="center"
         textAlign="center"
-        paddingY="25px"
-        paddingBottom="40px"
-        gridGap="4rem"
+        // paddingY="25px"
+        // paddingBottom="40px"
+        padding="0px 15% 40px 15%"
+        gridGap="3rem"
       >
         <Container alignItems="center" alignContent="center">
           <Image
@@ -47,7 +70,8 @@ const Home = (): JSX.Element => {
             I build cloud software.
           </Title>
         </Container>
-        <Container maxWidth="700px" gridGap="3rem" alignItems="center">
+
+        <Container maxWidth="700px" gridGap="2rem" alignItems="center">
           <Container>
             <Text textAlign="center">
               I&apos;m a Full Stack developer with experience in DevOps,
@@ -123,40 +147,16 @@ const Home = (): JSX.Element => {
             </TabList>
             <TabPanels>
               <TabPanel>
-                <List width="100%" spacing={3}>
-                  <ListItem className="exp-entry">
-                    <FaChevronRight
-                      style={{ margin: '0px' }}
-                      color="green.500"
-                    />
-                    <p className="glance">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                    </p>
-                  </ListItem>
-                  <ListItem className="exp-entry">
-                    <FaChevronRight color="green.500" />
-                    <p className="glance">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Lorem ipsum dolor sit amet
-                    </p>
-                  </ListItem>
-                  <ListItem className="exp-entry">
-                    <FaChevronRight color="green.500" />
-                    <p className="glance">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                    </p>
-                  </ListItem>
-                  <ListItem className="exp-entry">
-                    <FaChevronRight color="green.500" />
-                    <p className="glance">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                    </p>
-                  </ListItem>
-                </List>
+                <BulletList entries={glanceData.backend} />
               </TabPanel>
               <TabPanel>
-                <p>two!</p>
+                <BulletList entries={glanceData.frontend} />
+              </TabPanel>
+              <TabPanel>
+                <BulletList entries={glanceData.cloud} />
+              </TabPanel>
+              <TabPanel>
+                <BulletList entries={glanceData.admin} />
               </TabPanel>
             </TabPanels>
           </Tabs>
@@ -164,6 +164,15 @@ const Home = (): JSX.Element => {
       </Container>
     </Container>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const summary = await getSummary();
+  return {
+    props: {
+      summary,
+    },
+  };
 };
 
 export default Home;
