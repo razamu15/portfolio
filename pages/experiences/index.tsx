@@ -101,6 +101,9 @@ interface ExperienceProps {
 }
 
 const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
+  const skills = React.useRef(null);
+  const exps = React.useRef(null);
+
   return (
     <Container>
       <Head>
@@ -108,15 +111,38 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
       </Head>
       <Container alignContent="center" alignItems="center">
         <Title fontSize={['3rem', '4rem']} as="h2">
-          CTO & passionate
+          Up-and-Coming 👨‍💻
         </Title>
         <Container maxWidth={['100%', '720px']} marginY="2rem">
-          <Text>I&apos;m a Full-Stack/DevOps developer living in Paris.</Text>
           <Text>
-            During my free time I like going gym, doing Bench Press, make design
-            and make video edits on After Effects. You can check some cool drone
-            edits on my&nbsp;
-            <a href="https://instagram.com/croissant2france">Instagram</a>.
+            I have 2+ plus years of professional experience across multiple
+            roles and organizations (before graduation). From developer, to
+            architect to consultant, the diversity in my roles has given me an
+            ability to adapt and has allowed me to learn a wide breadth of
+            technical skills and domain knowledge. Scroll to:{' '}
+            <a
+              onClick={() =>
+                exps.current.scrollIntoView({ behavior: 'smooth' })
+              }
+            >
+              💼 Work Experiences
+            </a>{' '}
+            or{' '}
+            <a
+              onClick={() =>
+                skills.current.scrollIntoView({ behavior: 'smooth' })
+              }
+            >
+              💻 Skills
+            </a>
+            .{' '}
+          </Text>
+          <Text>
+            (Psst) that ☝️ 2 years number is not including the multitude of
+            projects I have done and the extracurricular activities I have
+            participated in, on or off campus. You can see those here:{' '}
+            <a href="/projects">🔨 Projects</a> &nbsp; &nbsp;{' '}
+            <a href="/extras">🎓 Extracurriculars</a>
           </Text>
         </Container>
       </Container>
@@ -128,6 +154,7 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
         alignItems="center"
         textAlign="center"
         minHeight="500px"
+        ref={skills}
       >
         <Title fontSize="40px" as="h2">
           Technologies I Have Used
@@ -202,6 +229,7 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
         width="100%"
         padding="2rem 10% 4rem 10%"
         gridGap="3rem"
+        ref={exps}
       >
         <Title fontSize="40px" as="h2">
           Work Experiences

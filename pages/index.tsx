@@ -134,8 +134,8 @@ const Home = ({ summary }: HomeProps): JSX.Element => {
           </Title>
           <Text textAlign="center">
             This is a short summary of my skills. Please look 👀 around and
-            visit the <a href="/experiences">Experiences</a> or{' '}
-            <a href="/projects">Projects</a> page for more details.
+            visit the <a href="/experiences">💼 Experiences</a> or &nbsp;
+            <a href="/projects">🔨 Projects</a> page for more details.
           </Text>
           <Tabs variant="soft-rounded" colorScheme="gray" paddingY="2rem">
             <TabList justifyContent="center">

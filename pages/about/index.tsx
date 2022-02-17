@@ -19,7 +19,13 @@ const months = [
   'Nov',
   'Dec',
 ];
-const sorter = (a, b) => {
+
+interface SorterProps {
+  month: string;
+  year: number;
+}
+
+const sorter = (a: SorterProps, b: SorterProps) => {
   if (a.year !== b.year) {
     return a.year - b.year;
   } else {
@@ -53,8 +59,8 @@ const About = ({ timeline }: AboutProps): JSX.Element => {
           <Text>
             Personally, sticking to the same tech stack and doing the same thing
             repeatedly gets boring; and I&apos;m blessed to be in software,
-            because there is always something new to learn or try out. &nbsp; My
-            goal as a professional is to be in a role where I can learn and grow
+            because there is always something new to learn or try out. My goal
+            as a professional is to be in a role where I can learn and grow
             everyday while working on a product that I truly care about. &nbsp;
             <a
               style={{ cursor: 'pointer' }}

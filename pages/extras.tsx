@@ -16,15 +16,16 @@ const Extracurriculars = ({ extras }: ExtraCurrProps): JSX.Element => {
       </Head>
       <Container alignContent="center" alignItems="center">
         <Title fontSize={['3rem', '4rem']} as="h2">
-          Extra Curriculars
+          Extracurriculars
         </Title>
         <Container maxWidth={['100%', '720px']} marginY="2rem">
           <Text>I love getting involved in the things I care about.</Text>
           <Text>
-            During my time at university, I have found plenty of opportunities
-            to get involved in the community around me. I have gained a lot from
-            them, especially being able to meet and talk to many people and
-            seeing differnt perspectives has been the most enjoyable part.
+            During my time at university 🏫, I have found plenty of
+            opportunities to get involved in the community around me. I have
+            gained a lot from them, especially being able to meet and talk to
+            many people 🧑‍🤝‍🧑and seeing differnt perspectives has been the most
+            enjoyable part.
           </Text>
         </Container>
       </Container>
