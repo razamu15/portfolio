@@ -40,7 +40,7 @@ const Home = ({ summary }: HomeProps): JSX.Element => {
   let glanceData = summary[0].data;
 
   return (
-    <Container marginTop="-2rem">
+    <Container>
       <Container
         justifyContent="center"
         alignContent="center"
@@ -48,35 +48,34 @@ const Home = ({ summary }: HomeProps): JSX.Element => {
         textAlign="center"
         // paddingY="25px"
         // paddingBottom="40px"
-        padding="0px 15% 40px 15%"
+        padding="0px 13% 40px 13%"
         gridGap="3rem"
       >
         <Container alignItems="center" alignContent="center">
           <Image
-            src="/me.jpg"
+            src="/me.jpeg"
             alt="Antoine Ordonez"
             width="120px"
             height="120px"
             objectFit="cover"
             className={styles.image}
           />
-          <Title>Antoine Ordonez</Title>
-          <Title
-            fontSize="2rem"
-            color="rgba(0, 0, 0, 0.6)"
-            fontWeight="500"
-            as="h2"
-          >
-            I build cloud software.
+          <Title>Muhammad Raza</Title>
+          <Title fontSize="2rem" fontWeight="500" as="h2">
+            <span style={{ color: 'rgba(0, 0, 0, 0.6)' }}>
+              I love building things
+            </span>{' '}
+            🏗️
           </Title>
         </Container>
 
-        <Container maxWidth="700px" gridGap="2rem" alignItems="center">
+        <Container gridGap="2rem" alignItems="center" width="110%">
           <Container>
             <Text textAlign="center">
-              I&apos;m a Full Stack developer with experience in DevOps,
-              Backend, Frontend and mobile development. Currently CTO of&nbsp;
-              <a href="https://shareview.fr">Shareview</a> and living in Paris.
+              I&apos;m a developer with experience in Backend, Frontend, Cloud
+              Architecture and a bit of DevOps and Infrastructure. Graduating
+              from <a href="https://shareview.fr">University of Toronto</a> in
+              August 2022.
             </Text>
           </Container>
           <Grid
@@ -134,16 +133,16 @@ const Home = ({ summary }: HomeProps): JSX.Element => {
             At a Glance
           </Title>
           <Text textAlign="center">
-            This is a short summary of my skills. Please look around and visit
-            the <a href="/experiences">Experiences</a> or{' '}
+            This is a short summary of my skills. Please look 👀 around and
+            visit the <a href="/experiences">Experiences</a> or{' '}
             <a href="/projects">Projects</a> page for more details.
           </Text>
           <Tabs variant="soft-rounded" colorScheme="gray" paddingY="2rem">
             <TabList justifyContent="center">
               <Tab>Backend</Tab>
               <Tab>Frontend</Tab>
-              <Tab>Cloud & Architecture</Tab>
-              <Tab>Administration</Tab>
+              <Tab>Cloud Architecture</Tab>
+              <Tab>DevOps & Infrastructure</Tab>
             </TabList>
             <TabPanels>
               <TabPanel>
@@ -156,7 +155,7 @@ const Home = ({ summary }: HomeProps): JSX.Element => {
                 <BulletList entries={glanceData.cloud} />
               </TabPanel>
               <TabPanel>
-                <BulletList entries={glanceData.admin} />
+                <BulletList entries={glanceData.infra} />
               </TabPanel>
             </TabPanels>
           </Tabs>

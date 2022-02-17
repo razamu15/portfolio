@@ -51,6 +51,7 @@ import {
   SiTeamcity,
   SiWebrtc,
   SiMicrosoftaccess,
+  SiDotnet,
 } from 'react-icons/si';
 
 import { GiCamel } from 'react-icons/gi';
@@ -62,6 +63,11 @@ const techIcons = {
     Icon: null,
     url: '',
     name: 'template',
+  },
+  dotnet: {
+    Icon: SiDotnet,
+    url: 'https://dotnet.microsoft.com/en-us/',
+    name: 'Dot NET',
   },
   access: {
     Icon: SiMicrosoftaccess,
@@ -236,7 +242,7 @@ const techIcons = {
   azure: {
     Icon: VscAzure,
     url: 'https://azure.microsoft.com/en-ca/',
-    name: 'azure',
+    name: 'Azure',
   },
   kafka: {
     Icon: SiApachekafka,
@@ -397,7 +403,7 @@ function TechPanel({ noob, pro }: PanelProps) {
 }
 
 function getIcons(stack: String[]) {
-  let result = [];
+  let result: String[] = [];
   stack.forEach((tech) => {
     result.push(techIcons[tech]);
   });

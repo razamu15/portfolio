@@ -2,15 +2,38 @@ import React from 'react';
 import Head from 'next/head';
 import { Title, Text, Container, Grid, getIcons } from '@components';
 import { Button } from '@chakra-ui/react';
-import { SiNextdotjs } from 'react-icons/si';
 import { GetStaticProps } from 'next/types';
 import { getTimeline, Post } from '@posts';
+
+const months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'June',
+  'July',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+const sorter = (a, b) => {
+  if (a.year !== b.year) {
+    return a.year - b.year;
+  } else {
+    return months.indexOf(a.month) - months.indexOf(b.month);
+  }
+};
 
 interface AboutProps {
   timeline: Post[];
 }
 
 const About = ({ timeline }: AboutProps): JSX.Element => {
+  const journey = React.useRef(null);
+
   return (
     <Container>
       <Head>
@@ -18,21 +41,35 @@ const About = ({ timeline }: AboutProps): JSX.Element => {
       </Head>
       <Container alignContent="center" alignItems="center">
         <Title fontSize={['3rem', '4rem']} as="h2">
-          CTO & passionate
+          Lifelong Learner
         </Title>
         <Container maxWidth={['100%', '720px']} marginY="2rem">
-          <Text>I&apos;m a Full-Stack/DevOps developer living in Paris.</Text>
           <Text>
-            During my free time I like going gym, doing Bench Press, make design
-            and make video edits on After Effects. You can check some cool drone
-            edits on my&nbsp;
-            <a href="https://instagram.com/croissant2france">Instagram</a>.
+            I absolutely love learning new technologies. I am always building
+            something new, trying out a UI Library or framework, or creating a
+            side project with the latest and greated cloud architecture and
+            trends.
+          </Text>
+          <Text>
+            Personally, sticking to the same tech stack and doing the same thing
+            repeatedly gets boring; and I&apos;m blessed to be in software,
+            because there is always something new to learn or try out. &nbsp; My
+            goal as a professional is to be in a role where I can learn and grow
+            everyday while working on a product that I truly care about. &nbsp;
+            <a
+              style={{ cursor: 'pointer' }}
+              onClick={() =>
+                journey.current.scrollIntoView({ behavior: 'smooth' })
+              }
+            >
+              What im learning 👇
+            </a>
           </Text>
         </Container>
       </Container>
 
       <Container width="100%" padding="4rem 15%" gridGap="3rem">
-        <Title fontSize="40px" as="h2">
+        <Title ref={journey} fontSize="40px" as="h2">
           My Learning Journey
         </Title>
         <Container width="100%">
@@ -63,7 +100,8 @@ const About = ({ timeline }: AboutProps): JSX.Element => {
                           gridTemplateColumns="repeat(2, auto)"
                           justifyItems="flex-start"
                           justifyContent="flex-start"
-                          gridGap="1rem"
+                          marginTop="0.5rem"
+                          gridGap="2rem"
                         >
                           <Title
                             fontSize="1rem"
@@ -82,7 +120,7 @@ const About = ({ timeline }: AboutProps): JSX.Element => {
                           </Text>
                         </Grid>
                         <p className="learned">
-                          Learned:
+                          New Tech:
                           {getIcons(entry.data.new).map((tecObj) => {
                             return (
                               <Button
@@ -95,7 +133,14 @@ const About = ({ timeline }: AboutProps): JSX.Element => {
                             );
                           })}
                         </p>
-                        <p className="reason">{entry.data.learned}</p>
+                        <p className="reason">
+                          <span
+                            style={{ fontWeight: '500', marginRight: '10px' }}
+                          >
+                            Learned:
+                          </span>{' '}
+                          {entry.data.learned}
+                        </p>
                       </Container>
                     </Grid>
                   </div>
@@ -113,9 +158,17 @@ export const getStaticProps: GetStaticProps = async () => {
   let timeline = await getTimeline();
   timeline = timeline
     .filter((ele) => ele.data.journey)
-    .sort((a, b) =>
-      b.data.date.toString().localeCompare(a.data.date.toString()),
-    );
+    .sort((a, b) => {
+      let x = {
+        month: a.data.date.split(' ')[0],
+        year: parseInt(a.data.date.split(' ')[1]),
+      };
+      let y = {
+        month: b.data.date.split(' ')[0],
+        year: parseInt(b.data.date.split(' ')[1]),
+      };
+      return sorter(y, x);
+    });
 
   return {
     props: {

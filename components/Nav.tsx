@@ -98,10 +98,10 @@ const Nav = ({ isOpen, onOpen, onClose }: NavProps): JSX.Element => {
       gridTemplateColumns={['1fr', '1fr', '1fr 1fr 1fr']}
       alignContent="center"
       justifyContent={['center', 'center', 'space-between']}
-      margin="3rem 0"
+      margin="2rem 0"
     >
       <Container display={['none', 'none', 'flex']}>
-        <NavLink href="/" text="Muhammad Saad Raza" isActive={false} />
+        <NavLink href="/" text="Muhammad Raza" isActive={false} />
       </Container>
       <MenuContainer display={['flex', 'none', 'none']}>
         {isOpen ? (
