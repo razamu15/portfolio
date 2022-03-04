@@ -141,7 +141,7 @@ const Nav = ({ isOpen, onOpen, onClose }: NavProps): JSX.Element => {
       </Container>
       <Container alignContent="flex-end" display={['none', 'none', 'flex']}>
         <NavLink
-          href="mailto:hello@shellbear.me"
+          href="mailto:m.saad.raza1999@gmail.com"
           text="Contact"
           isActive={false}
         />

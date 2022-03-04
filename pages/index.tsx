@@ -72,9 +72,10 @@ const Home = ({ summary }: HomeProps): JSX.Element => {
         <Container gridGap="2rem" alignItems="center" width="110%">
           <Container>
             <Text textAlign="center">
-              I&apos;m a developer with experience in Backend, Frontend, Cloud
-              Architecture and a bit of DevOps and Infrastructure. Graduating
-              from <a href="https://shareview.fr">University of Toronto</a> in
+              I&apos;m a developer with experience in Full-Stack, Cloud
+              Architecture and a bit of DevOps and Infrastructure. <br />
+              Graduating from{' '}
+              <a href="https://www.utoronto.ca/">University of Toronto</a> in
               August 2022.
             </Text>
           </Container>
@@ -127,9 +128,9 @@ const Home = ({ summary }: HomeProps): JSX.Element => {
         </Container>
       </Container>
 
-      <Container alignItems="center" paddingY="3rem">
+      <Container ref={glance} alignItems="center" paddingY="3rem">
         <Container maxWidth="600px" alignItems="center" alignContent="center">
-          <Title ref={glance} id="glance" fontSize="3rem" as="h3">
+          <Title id="glance" fontSize="3rem" as="h3">
             At a Glance
           </Title>
           <Text textAlign="center">

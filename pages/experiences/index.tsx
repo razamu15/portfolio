@@ -21,7 +21,7 @@ import {
   ListItem,
 } from '@chakra-ui/react';
 import { getPosts, Post } from '@posts';
-import { FaChevronRight } from 'react-icons/fa';
+import { FaChevronRight, FaCaretDown, FaCaretUp } from 'react-icons/fa';
 
 interface Job {
   job: Post;
@@ -44,7 +44,7 @@ const JobEntry = ({ job, order }: Job) => {
           <Container width="100%">
             <Text>0{order}</Text>
           </Container>
-          <Grid width="100%" gridTemplateColumns="4fr 1fr">
+          <Grid width="100%" gridTemplateColumns="5fr 1fr">
             <Container width="100%" alignItems="flex-start" textAlign="start">
               <Grid
                 width="100%"
@@ -77,6 +77,11 @@ const JobEntry = ({ job, order }: Job) => {
                 </Text>
               </Grid>
             </Container>
+            {isOpen ? (
+              <FaCaretUp style={{ margin: '0px' }} />
+            ) : (
+              <FaCaretDown style={{ margin: '0px' }} />
+            )}
           </Grid>
         </Grid>
         <Collapse className="exp-details" in={isOpen} animateOpacity>
@@ -121,6 +126,7 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
             ability to adapt and has allowed me to learn a wide breadth of
             technical skills and domain knowledge. Scroll to:{' '}
             <a
+              style={{ cursor: 'pointer' }}
               onClick={() =>
                 exps.current.scrollIntoView({ behavior: 'smooth' })
               }
@@ -129,6 +135,7 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
             </a>{' '}
             or{' '}
             <a
+              style={{ cursor: 'pointer' }}
               onClick={() =>
                 skills.current.scrollIntoView({ behavior: 'smooth' })
               }
@@ -157,7 +164,7 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
         ref={skills}
       >
         <Title fontSize="40px" as="h2">
-          Technologies I Have Used
+          Skills
         </Title>
         <Tabs
           orientation="vertical"

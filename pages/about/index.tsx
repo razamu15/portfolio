@@ -51,10 +51,10 @@ const About = ({ timeline }: AboutProps): JSX.Element => {
         </Title>
         <Container maxWidth={['100%', '720px']} marginY="2rem">
           <Text>
-            I absolutely love learning new technologies. I am always building
+            I absolutely love ❤️ learning new technologies. I am always building
             something new, trying out a UI Library or framework, or creating a
-            side project with the latest and greated cloud architecture and
-            trends.
+            side project with the latest and greatest ✨ cloud architecture and
+            trends 📈.
           </Text>
           <Text>
             Personally, sticking to the same tech stack and doing the same thing
