@@ -12,7 +12,7 @@ type LayoutProps = {
 };
 
 const Layout: React.FC<LayoutProps> = ({
-  title = 'Muhammad Raza',
+  title = 'Muhammad Saad Raza',
   children,
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);

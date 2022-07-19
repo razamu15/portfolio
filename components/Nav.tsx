@@ -101,7 +101,7 @@ const Nav = ({ isOpen, onOpen, onClose }: NavProps): JSX.Element => {
       margin="2rem 0"
     >
       <Container display={['none', 'none', 'flex']}>
-        <NavLink href="/" text="Muhammad Raza" isActive={false} />
+        <NavLink href="/" text="Saad Raza" isActive={false} />
       </Container>
       <MenuContainer display={['flex', 'none', 'none']}>
         {isOpen ? (

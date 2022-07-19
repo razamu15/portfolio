@@ -49,7 +49,7 @@ const Home = ({ summary }: HomeProps): JSX.Element => {
         // paddingY="25px"
         // paddingBottom="40px"
         padding="0px 13% 40px 13%"
-        gridGap="3rem"
+        gridGap="1rem"
       >
         <Container alignItems="center" alignContent="center">
           <Image
@@ -60,7 +60,7 @@ const Home = ({ summary }: HomeProps): JSX.Element => {
             objectFit="cover"
             className={styles.image}
           />
-          <Title>Muhammad Raza</Title>
+          <Title>Saad Raza</Title>
           <Title fontSize="2rem" fontWeight="500" as="h2">
             <span style={{ color: 'rgba(0, 0, 0, 0.6)' }}>
               I love building things
@@ -70,7 +70,7 @@ const Home = ({ summary }: HomeProps): JSX.Element => {
         </Container>
 
         <Container gridGap="2rem" alignItems="center" width="110%">
-          <Container>
+          {/* <Container>
             <Text textAlign="center">
               I&apos;m a developer with experience in Full-Stack, Cloud
               Architecture and a bit of DevOps and Infrastructure. <br />
@@ -78,7 +78,7 @@ const Home = ({ summary }: HomeProps): JSX.Element => {
               <a href="https://www.utoronto.ca/">University of Toronto</a> in
               August 2022.
             </Text>
-          </Container>
+          </Container> */}
           <Grid
             gridGap="2rem"
             marginTop="2rem"
@@ -134,7 +134,8 @@ const Home = ({ summary }: HomeProps): JSX.Element => {
             At a Glance
           </Title>
           <Text textAlign="center">
-            This is a short summary of my skills. Please look 👀 around and
+            I&apos;m a developer with a wide variety of experiences in Backend,
+            Frontend, Cloud Architecture, DevOps and Data Engineering. Please
             visit the <a href="/experiences">💼 Experiences</a> or &nbsp;
             <a href="/projects">🔨 Projects</a> page for more details.
           </Text>
