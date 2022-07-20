@@ -41,7 +41,7 @@ const About = ({ timeline }: AboutProps): JSX.Element => {
   const journey = React.useRef(null);
 
   return (
-    <Container>
+    <Container marginTop={'-6.3rem'}>
       <Head>
         <title>About</title>
       </Head>
@@ -123,7 +123,7 @@ const About = ({ timeline }: AboutProps): JSX.Element => {
                           {getIcons(entry.data.new).map((tecObj, i) => {
                             return (
                               <Button
-                                key = {i}
+                                key={i}
                                 leftIcon={<tecObj.Icon />}
                                 colorScheme="gray"
                                 variant="ghost"
