@@ -5,13 +5,19 @@ import {
   Title,
   Container,
   Text,
-  Button,
+  Link,
+  Card,
   Grid,
   TransparentLink,
 } from '@components';
 import { getPosts, Post } from '@posts';
 import { useDisclosure, Collapse, List, ListItem } from '@chakra-ui/react';
-import { FaChevronRight, FaCaretDown, FaCaretUp } from 'react-icons/fa';
+import {
+  FaChevronRight,
+  FaCaretDown,
+  FaCaretUp,
+  FaGithub,
+} from 'react-icons/fa';
 
 interface ProjectProps {
   projects: Post[];
@@ -82,7 +88,7 @@ const JobEntry = ({ job, order }: Job) => {
           <Container width="100%">
             <Text>{order > 9 ? order : '0' + order.toString()}</Text>
           </Container>
-          <Grid width="100%" gridTemplateColumns="5fr 1fr">
+          <Grid width="100%" gridTemplateColumns="6fr 1fr 1fr">
             <Container width="100%" alignItems="flex-start" textAlign="start">
               <Grid
                 width="100%"
@@ -115,6 +121,12 @@ const JobEntry = ({ job, order }: Job) => {
                 </Text>
               </Grid>
             </Container>
+            <Container width="100%" alignItems="flex-start" textAlign="start">
+              <Link href={job.data.repo} target={'_blank'}>
+                <FaGithub size="1.7rem" />
+              </Link>
+            </Container>
+
             {isOpen ? (
               <FaCaretUp style={{ margin: '0px' }} />
             ) : (
