@@ -50,6 +50,7 @@ const Projects = ({ projects }: ProjectProps): JSX.Element => (
 
 export const getStaticProps: GetStaticProps = async () => {
   const projects = await getPosts('t_projects');
+  projects.sort((a, b) => (a.data.porder < b.data.porder ? -1 : 1));
 
   return {
     props: {
@@ -79,7 +80,7 @@ const JobEntry = ({ job, order }: Job) => {
           borderTop="1px solid rgba(0,0,0,0.1)"
         >
           <Container width="100%">
-            <Text>0{order}</Text>
+            <Text>{order > 9 ? order : '0' + order.toString()}</Text>
           </Container>
           <Grid width="100%" gridTemplateColumns="5fr 1fr">
             <Container width="100%" alignItems="flex-start" textAlign="start">
