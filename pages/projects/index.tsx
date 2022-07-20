@@ -68,7 +68,6 @@ interface Job {
 const JobEntry = ({ job, order }: Job) => {
   const { isOpen, onToggle } = useDisclosure();
 
-  console.log(job);
   return (
     <>
       <TransparentLink onClick={onToggle} key={job.data.slug}>
