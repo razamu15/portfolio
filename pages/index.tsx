@@ -16,7 +16,7 @@ import { FaChevronRight } from 'react-icons/fa';
 import { GetStaticProps } from 'next/types';
 import { getSummary, Post } from '@posts';
 
-const BulletList = (props: { entries: String[] }) => {
+const BulletList = (props: { entries: string[] }) => {
   return (
     <List width="100%" spacing={3}>
       {props.entries.map((text, i) => {

@@ -58,6 +58,7 @@ import {
   SiTwilio,
   SiContentful,
   SiChakraui,
+  SiGithubactions,
 } from 'react-icons/si';
 import { AiOutlinePartition } from 'react-icons/ai';
 import { IoGameControllerSharp } from 'react-icons/io5';
@@ -65,11 +66,21 @@ import { GiCamel } from 'react-icons/gi';
 import { BsCode } from 'react-icons/bs';
 import { VscAzure } from 'react-icons/vsc';
 
+export interface PanelProps {
+  noob: string[];
+  pro: string[];
+}
+
 const techIcons = {
   template: {
     Icon: null,
     url: '',
     name: 'template',
+  },
+  githubactions: {
+    Icon: SiGithubactions,
+    url: 'https://github.com/features/actions',
+    name: 'Github Actions',
   },
   chakra: {
     Icon: SiChakraui,
@@ -381,8 +392,8 @@ const techIcons = {
 import { Container, Grid, Link, Card } from '@components';
 
 export interface PanelProps {
-  noob: String[];
-  pro: String[];
+  noob: string[];
+  pro: string[];
 }
 
 function TechPanel({ noob, pro }: PanelProps) {
@@ -449,8 +460,8 @@ function TechPanel({ noob, pro }: PanelProps) {
   );
 }
 
-function getIcons(stack: String[]) {
-  let result: String[] = [];
+function getIcons(stack: string[]) {
+  let result: string[] = [];
   stack.forEach((tech) => {
     result.push(techIcons[tech]);
   });
