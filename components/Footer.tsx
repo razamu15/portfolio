@@ -4,7 +4,7 @@ import Grid from './Grid';
 import Link from './Link';
 import Text from './Text';
 import React from 'react';
-import { SiGithub, SiLinkedin, SiTwitter } from 'react-icons/si';
+import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { MdMail } from 'react-icons/md';
 import { Malt, Instagram } from '@icons';
 
