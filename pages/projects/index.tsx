@@ -1,47 +1,24 @@
 import React from 'react';
 import Head from 'next/head';
-import styled from 'styled-components';
 import { GetStaticProps } from 'next';
-
-import { Title, Container, Text, Button, Grid, Link, List } from '@components';
+import {
+  Title,
+  Container,
+  Text,
+  Button,
+  Grid,
+  TransparentLink,
+} from '@components';
 import { getPosts, Post } from '@posts';
+import { useDisclosure, Collapse, List, ListItem } from '@chakra-ui/react';
+import { FaChevronRight, FaCaretDown, FaCaretUp } from 'react-icons/fa';
 
 interface ProjectProps {
   projects: Post[];
 }
 
-const ProjectImage = styled.img`
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 4px;
-  transition: 0.2s ease-in-out 0s;
-
-  :hover {
-    transform: scale(1.02);
-  }
-`;
-
-const ProjectContainer = styled(Container)`
-  align-self: stretch;
-
-  :hover > * img {
-    transform: scale(1.03);
-  }
-`;
-
-const ProjectTag = styled.li`
-  color: rgb(105, 105, 105);
-  font-size: 13px;
-  letter-spacing: 0.03em;
-`;
-
-const ProjectButton = styled(Button)`
-  padding: 12px 30px;
-`;
-
 const Projects = ({ projects }: ProjectProps): JSX.Element => (
-  <Container marginBottom="5rem">
+  <Container>
     <Head>
       <title>Projects</title>
     </Head>
@@ -53,56 +30,21 @@ const Projects = ({ projects }: ProjectProps): JSX.Element => (
         <a href="https://github.com/razamu15">Github</a>.
       </Text>
     </Container>
-    <Grid
-      py="4rem"
-      gridTemplateColumns={['1fr', 'repeat(2, 1fr)']}
+
+    <Container
+      alignContent="center"
+      alignItems="center"
+      textAlign="center"
       width="100%"
-      gridGap="10%"
+      padding="2rem 10% 2rem 10%"
+      gridGap="3rem"
     >
-      {projects.map(({ data }) => (
-        <ProjectContainer
-          key={data.slug}
-          flexDirection="column"
-          alignItems="flex-start"
-          width="100%"
-          gridGap="1.5rem"
-        >
-          <Link href={data.url} width="100%">
-            <ProjectImage src={data.preview} />
-          </Link>
-          <Container
-            flexDirection="row"
-            justifyContent="space-between"
-            alignItems="center"
-            width="100%"
-          >
-            <Link href={data.url}>
-              <Title fontSize="2rem" as="h2">
-                {data.title}
-              </Title>
-            </Link>
-            <Link href={data.url}>
-              <ProjectButton variant="secondary">View Project</ProjectButton>
-            </Link>
-          </Container>
-          <Container gridGap="1rem">
-            <Text
-              textAlign="start"
-              margin={0}
-              lineHeight="180%"
-              letterSpacing="0.02rem"
-            >
-              {data.caption}
-            </Text>
-            <List marginY="1rem">
-              {data.skills.map((tag: string) => (
-                <ProjectTag key={tag}>{tag}</ProjectTag>
-              ))}
-            </List>
-          </Container>
-        </ProjectContainer>
-      ))}
-    </Grid>
+      <Container width="100%">
+        {projects.map((pro, i) => (
+          <JobEntry key={i} job={pro} order={i + 1} />
+        ))}
+      </Container>
+    </Container>
   </Container>
 );
 
@@ -117,3 +59,82 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default Projects;
+
+interface Job {
+  job: Post;
+  order: Number;
+}
+
+const JobEntry = ({ job, order }: Job) => {
+  const { isOpen, onToggle } = useDisclosure();
+
+  console.log(job);
+  return (
+    <>
+      <TransparentLink onClick={onToggle} key={job.data.slug}>
+        <Grid
+          gridTemplateColumns="1fr 4fr"
+          justifyItems="flex-start"
+          gridGap="1rem"
+          paddingY="2rem"
+          borderTop="1px solid rgba(0,0,0,0.1)"
+        >
+          <Container width="100%">
+            <Text>0{order}</Text>
+          </Container>
+          <Grid width="100%" gridTemplateColumns="5fr 1fr">
+            <Container width="100%" alignItems="flex-start" textAlign="start">
+              <Grid
+                width="100%"
+                gridTemplateColumns="repeat(2, auto)"
+                justifyItems="flex-start"
+                justifyContent="flex-start"
+                gridGap="1rem"
+              >
+                <Title fontSize="1.5rem" margin={0} as="h3">
+                  {job.data.title}
+                </Title>
+              </Grid>
+              <Grid
+                width="100%"
+                gridTemplateColumns="repeat(2, auto)"
+                justifyItems="flex-start"
+                justifyContent="flex-start"
+                gridGap="1rem"
+              >
+                <Title
+                  fontSize="1.1rem"
+                  fontWeight="bold"
+                  margin="0.5rem"
+                  as="h5"
+                >
+                  {job.data.company}
+                </Title>
+                <Text fontSize="smaller" margin={0} color="rgba(0, 0, 0, 0.1)">
+                  {job.data.date}
+                </Text>
+              </Grid>
+            </Container>
+            {isOpen ? (
+              <FaCaretUp style={{ margin: '0px' }} />
+            ) : (
+              <FaCaretDown style={{ margin: '0px' }} />
+            )}
+          </Grid>
+        </Grid>
+        <Collapse className="exp-details" in={isOpen} animateOpacity>
+          <List width="100%" spacing={3}>
+            {job.data.description.map((bullet: String) => {
+              return (
+                <ListItem className="exp-entry">
+                  <FaChevronRight style={{ margin: '0px' }} color="green.500" />
+                  <p className="work">{bullet}</p>
+                </ListItem>
+              );
+            })}
+          </List>
+        </Collapse>
+      </TransparentLink>
+    </>
+  );
+};

@@ -11,8 +11,8 @@ const months = [
   'Mar',
   'Apr',
   'May',
-  'June',
-  'July',
+  'Jun',
+  'Jul',
   'Aug',
   'Sep',
   'Oct',
@@ -85,13 +85,13 @@ const About = ({ timeline }: AboutProps): JSX.Element => {
                 return (
                   <div key={i} className="timeline-entry">
                     <dt />
-                    <Grid width="100%" marginTop="-30px">
+                    <Container marginTop="-30px">
                       <Container
                         width="100%"
                         alignItems="flex-start"
                         textAlign="start"
                       >
-                        <Grid
+                        {/* <Grid
                           width="100%"
                           justifyItems="flex-start"
                           justifyContent="flex-start"
@@ -100,7 +100,7 @@ const About = ({ timeline }: AboutProps): JSX.Element => {
                           <Title fontSize="1.5rem" margin={0} as="h3">
                             {entry.data.title}
                           </Title>
-                        </Grid>
+                        </Grid> */}
                         <Grid
                           width="100%"
                           gridTemplateColumns="repeat(2, auto)"
@@ -110,20 +110,13 @@ const About = ({ timeline }: AboutProps): JSX.Element => {
                           gridGap="2rem"
                         >
                           <Title
-                            fontSize="1rem"
+                            fontSize="1.2rem"
                             fontWeight="normal"
                             margin={0}
                             as="h5"
                           >
                             {entry.data.type}
                           </Title>
-                          <Text
-                            fontSize="smaller"
-                            margin={0}
-                            color="rgba(0, 0, 0, 0.1)"
-                          >
-                            {entry.data.date}
-                          </Text>
                         </Grid>
                         <p className="learned">
                           New Tech:
@@ -148,7 +141,7 @@ const About = ({ timeline }: AboutProps): JSX.Element => {
                           {entry.data.learned}
                         </p>
                       </Container>
-                    </Grid>
+                    </Container>
                   </div>
                 );
               })}

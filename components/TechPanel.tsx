@@ -52,8 +52,15 @@ import {
   SiWebrtc,
   SiMicrosoftaccess,
   SiDotnet,
+  SiMaterialui,
+  SiBulma,
+  SiAzurefunctions,
+  SiTwilio,
+  SiContentful,
+  SiChakraui,
 } from 'react-icons/si';
-
+import { AiOutlinePartition } from 'react-icons/ai';
+import { IoGameControllerSharp } from 'react-icons/io5';
 import { GiCamel } from 'react-icons/gi';
 import { BsCode } from 'react-icons/bs';
 import { VscAzure } from 'react-icons/vsc';
@@ -63,6 +70,46 @@ const techIcons = {
     Icon: null,
     url: '',
     name: 'template',
+  },
+  chakra: {
+    Icon: SiChakraui,
+    url: '',
+    name: 'Chakra UI',
+  },
+  contentful: {
+    Icon: SiContentful,
+    url: 'https://www.contentful.com/',
+    name: 'Contentful',
+  },
+  ai: {
+    Icon: AiOutlinePartition,
+    url: 'https://en.wikipedia.org/wiki/Neural_network',
+    name: 'Neural Networks',
+  },
+  twilio: {
+    Icon: SiTwilio,
+    url: 'https://www.twilio.com/',
+    name: 'Twilio Video',
+  },
+  cloudfunc: {
+    Icon: SiAzurefunctions,
+    url: 'https://cloud.google.com/functions',
+    name: 'Cloud Functions',
+  },
+  bulma: {
+    Icon: SiBulma,
+    url: 'https://bulma.io/',
+    name: 'Bulma CSS',
+  },
+  materialui: {
+    Icon: SiMaterialui,
+    url: 'https://mui.com/',
+    name: 'Material UI',
+  },
+  gamedev: {
+    Icon: IoGameControllerSharp,
+    url: 'https://phaser.io/',
+    name: 'Game Dev',
   },
   dotnet: {
     Icon: SiDotnet,
@@ -162,7 +209,7 @@ const techIcons = {
   gcp: {
     Icon: SiGooglecloud,
     url: 'https://cloud.google.com/',
-    name: 'GCP',
+    name: 'Google Cloud Platform',
   },
   terraform: {
     Icon: SiTerraform,

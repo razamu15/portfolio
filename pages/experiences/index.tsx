@@ -198,12 +198,12 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
               <TechPanel
                 noob={['terraform', 'azure', 'nginx', 'digitalocean']}
                 pro={[
-                  'gcp',
-                  'netlify',
                   'firebase',
+                  'netlify',
                   'graphql',
                   'kafka',
                   'docker',
+                  'gcp',
                 ]}
               />
             </TabPanel>
