@@ -63,7 +63,7 @@ const Home = ({ summary }: HomeProps): JSX.Element => {
           <Title>Saad Raza</Title>
           <Title fontSize="2rem" fontWeight="500" as="h2">
             <span style={{ color: 'rgba(0, 0, 0, 0.6)' }}>
-              I love building things
+              I love 💖 building things
             </span>{' '}
             🏗️
           </Title>
