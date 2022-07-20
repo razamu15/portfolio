@@ -86,9 +86,9 @@ const JobEntry = ({ job, order }: Job) => {
         </Grid>
         <Collapse className="exp-details" in={isOpen} animateOpacity>
           <List width="100%" spacing={3}>
-            {job.data.description.map((bullet: string) => {
+            {job.data.description.map((bullet: string, i) => {
               return (
-                <ListItem className="exp-entry">
+                <ListItem key={i} className="exp-entry">
                   <FaChevronRight style={{ margin: '0px' }} color="green.500" />
                   <p className="work">{bullet}</p>
                 </ListItem>

@@ -120,9 +120,10 @@ const About = ({ timeline }: AboutProps): JSX.Element => {
                         </Grid>
                         <p className="learned">
                           New Tech:
-                          {getIcons(entry.data.new).map((tecObj) => {
+                          {getIcons(entry.data.new).map((tecObj, i) => {
                             return (
                               <Button
+                                key = {i}
                                 leftIcon={<tecObj.Icon />}
                                 colorScheme="gray"
                                 variant="ghost"
