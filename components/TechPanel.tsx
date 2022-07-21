@@ -59,6 +59,7 @@ import {
   SiContentful,
   SiChakraui,
   SiGithubactions,
+  SiUbuntu,
 } from 'react-icons/si';
 import { AiOutlinePartition } from 'react-icons/ai';
 import { IoGameControllerSharp } from 'react-icons/io5';
@@ -76,6 +77,11 @@ const techIcons = {
     Icon: null,
     url: '',
     name: 'template',
+  },
+  ubuntu: {
+    Icon: SiUbuntu,
+    url: 'https://ubuntu.com/',
+    name: 'Ubuntu',
   },
   githubactions: {
     Icon: SiGithubactions,
