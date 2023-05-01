@@ -120,8 +120,8 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
         </Title>
         <Container maxWidth={['100%', '720px']} marginY="2rem">
           <Text>
-            I have 2+ plus years of professional experience across multiple
-            roles and organizations (before graduation). From developer, to
+            I have 3+ plus years of professional experience across multiple
+            roles and organizations. From developer, to
             architect to consultant, the diversity in my roles has given me an
             ability to adapt and has allowed me to learn a wide breadth of
             technical skills and domain knowledge. Scroll to:{' '}
@@ -145,9 +145,9 @@ const Experiences = ({ experiences }: ExperienceProps): JSX.Element => {
             .{' '}
           </Text>
           <Text>
-            (Psst) that ☝️ 2 years number is not including the multitude of
-            projects I have done and the extracurricular activities I have
-            participated in, on or off campus. You can see those here:{' '}
+            (Psst) besides that ☝️ professional experience I have done many side 
+            projects to explore new tech and keep up to date with current trends. 
+            You can see those here:{' '}
             <a href="/projects">🔨 Projects</a> &nbsp; &nbsp;{' '}
             <a href="/extras">🎓 Extracurriculars</a>
           </Text>
